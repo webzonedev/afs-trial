@@ -96,9 +96,23 @@ Route::post('/client/companies/', 'Client\CompaniesController@store_info');
 
 Route::get('/client/companies/create', 'Client\CompaniesController@create_info');
 
-Route::post('/client/companies/{company}/mof_address', 'Client\MofSsnAddressController@store_mof_ssn_address');
+Route::post('/client/companies/{company}/mof_ssn_address', 'Client\MofSsnAddressController@store_mof_ssn_address');
 
-Route::get('/client/companies/{company}/mof_address/create', 'Client\MofSsnAddressController@create_mof_ssn_address');
+Route::get('/client/companies/{company}/mof_ssn_address/create', 'Client\MofSsnAddressController@create_mof_ssn_address');
+
+
+
+
+
+Route::get('/client/companies/{company}/files/upload', 'Client\CompanyFilesController@before_upload_files');
+
+Route::get('/client/companies/{company}/files/{id}/download', 'Client\CompanyFilesController@download_files');
+
+Route::put('/client/companies/{company}/files/upload', 'Client\CompanyFilesController@upload_files');
+
+Route::get('/client/companies/{company}/files/', 'Client\CompanyFilesController@index_files');
+
+
 
 
 
@@ -108,6 +122,8 @@ Route::get('/client/companies/{company}', 'Client\CompaniesController@show_info'
 Route::get('/client/companies/{company}/edit', 'Client\CompaniesController@edit_info');
 
 Route::put('/client/companies/{company}', 'Client\CompaniesController@update_info');
+
+
 
 
 

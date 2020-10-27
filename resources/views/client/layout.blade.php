@@ -19,6 +19,11 @@
   <link href="/css/sb-admin-2.css" rel="stylesheet">
   <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
+
+
+
+   
+
 </head>
 
 <body id="page-top">
@@ -221,8 +226,57 @@
       @csrf
       </form>
 
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+
+  <script language="Javascript">
+
+    
+             $('#uploadBtn').click(function(){
+              $(".progress").toggle();
+             });
+
+
+            var maProgressBar = $('.maProgressBar');
+
+
+            $('#maform').ajaxForm({
+            
+
+            beforeSend: function() {
+           
+            var percentVal = '0%';
+            maProgressBar.width(percentVal);
+            maProgressBar.html(percentVal);
+            },
+            uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            maProgressBar.width(percentVal)
+            maProgressBar.html(percentVal);
+            },
+           
+            success: function(response){
+              $("#Msg").text(response.success);
+              // window.location.href = "/client/companies/{{$company->id}}/files/upload";
+            },
+            // error: function(response){
+            //   $("#Msg").text(response.error);
+            //   // window.location.href = "/client/companies/{{$company->id}}/files/upload";
+            // },
+
+            
+
+            });
+      
+            </script>
+
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="/vendor/jquery/jquery.min.js"></script>
+ 
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -245,10 +299,6 @@
   <!-- Page level custom scripts -->
   <script src="/js/demo/datatables-demo.js"></script>
 
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
 
   
 </body>

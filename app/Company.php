@@ -36,6 +36,11 @@ class Company extends Model
         return $this->hasMany(Specialemp::class);
     }
 
+    public function company_files()
+    {
+        return $this->hasMany(Company_files::class);
+    }
+
 
     
 }

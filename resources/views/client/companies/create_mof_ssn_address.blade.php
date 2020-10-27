@@ -26,13 +26,13 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
+  <div class="col-xl-5 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink cardlink-active">العنوان لدى وزارة المالية</a> <i class="text-danger fas fa-file-invoice-dollar"></i> </div>
+            <a href="" class="myCardLink cardlink-active"> العنوان لدى وزارة المالية و الضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
             
           </div>
          
@@ -41,25 +41,6 @@
     </div>
   </div>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4 " >
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center smallcardSize">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">العنوان لدى الصندوق الوطني للضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-            
-              
-            </div> -->
-           
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >
@@ -114,7 +95,7 @@
 
 
 
-        <form  method="POST" action="/client/companies/{{$company->id}}/mof_address">
+        <form  method="POST" action="/client/companies/{{$company->id}}/mof_ssn_address">
           @csrf
 
 <div class="row">
@@ -276,8 +257,8 @@
               <h6 class="m-0 font-weight-bold text-danger">الطابق</h6>
             </div>
             <div class="card-body">
-            <input type="text" class="form-control form-control-user " id="building1" name="building1" 
-                      value="{{ old('building1') }}" placeholder="الطابق">
+            <input type="text" class="form-control form-control-user " id="floor1" name="floor1" 
+                      value="{{ old('floor1') }}" placeholder="الطابق">
             </div>
           </div>
 
@@ -589,8 +570,8 @@ function copyAddress(){
               <h6 class="m-0 font-weight-bold text-danger">الطابق</h6>
             </div>
             <div class="card-body">
-            <input type="text" class="form-control form-control-user " id="building2" name="building2" 
-                      value="{{ old('building2') }}" placeholder="الطابق">
+            <input type="text" class="form-control form-control-user " id="floor2" name="floor2" 
+                      value="{{ old('floor2') }}" placeholder="الطابق">
             </div>
           </div>
 

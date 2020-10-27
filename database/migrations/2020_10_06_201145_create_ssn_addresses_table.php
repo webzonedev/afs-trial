@@ -20,6 +20,7 @@ class CreateSsnAddressesTable extends Migration
             $table->string('street')->nullable();
             $table->string('neighborhood')->nullable();
             $table->string('real_estate_area')->nullable();
+            $table->string('real_estate_number')->nullable();
             $table->string('division_number')->nullable();
             $table->string('building')->nullable();
             $table->string('floor')->nullable();

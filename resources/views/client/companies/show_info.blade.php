@@ -26,36 +26,16 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
+  <div class="col-xl-5 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/mof_address" class="myCardLink">العنوان لدى وزارة المالية</a> <i class="text-danger fas fa-file-invoice-dollar"></i> </div>
+            <a href="/client/companies/{{$company->id}}/mof_ssn_address" class="myCardLink"> العنوان لدى وزارة المالية و الضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
             
           </div>
          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4 " >
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center smallcardSize">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/ssn_address" class="myCardLink">العنوان لدى الصندوق الوطني للضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-            
-              
-            </div> -->
-           
-          </div>
-        
         </div>
       </div>
     </div>
@@ -68,7 +48,7 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
+            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
             <!-- <div class="row no-gutters align-items-center">
             
               

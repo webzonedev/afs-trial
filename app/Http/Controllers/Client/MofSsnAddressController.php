@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use ILluminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
 use App\Mof_address;
+use App\Ssn_address;
 use App\Company;
 
 class MofSsnAddressController extends Controller
@@ -51,19 +52,20 @@ class MofSsnAddressController extends Controller
             ], 
 
             [
-                'governorate'  => request('governorate'),
-                'district' => request('district'),
-                'street' => request('street'),
-                'neighborhood' => request('neighborhood'),
-                'real_estate_area' => request('real_estate_area'),
-                'division_number' => request('division_number'),
-                'building' => request('building'),
-                'floor' => request('floor'),
-                'phone' => request('phone'),
-                'fax' => request('fax'),
-                'mailbox' => request('mailbox'),
-                'region' => request('region'),
-                'changed_date' => request('changed_date')
+                'governorate'  => request('governorate1'),
+                'district' => request('district1'),
+                'street' => request('street1'),
+                'neighborhood' => request('neighborhood1'),
+                'real_estate_area' => request('real_estate_area1'),
+                'real_estate_number' => request('real_estate_number1'),
+                'division_number' => request('division_number1'),
+                'building' => request('building1'),
+                'floor' => request('floor1'),
+                'phone' => request('phone1'),
+                'fax' => request('fax1'),
+                'mailbox' => request('mailbox1'),
+                'region' => request('region1'),
+                'changed_date' => request('changed_date1')
             ]
 
         );
@@ -77,19 +79,20 @@ class MofSsnAddressController extends Controller
             ], 
 
             [
-                'governorate'  => request('governorate'),
-                'district' => request('district'),
-                'street' => request('street'),
-                'neighborhood' => request('neighborhood'),
-                'real_estate_area' => request('real_estate_area'),
-                'division_number' => request('division_number'),
-                'building' => request('building'),
-                'floor' => request('floor'),
-                'phone' => request('phone'),
-                'fax' => request('fax'),
-                'mailbox' => request('mailbox'),
-                'region' => request('region'),
-                'changed_date' => request('changed_date')
+                'governorate'  => request('governorate2'),
+                'district' => request('district2'),
+                'street' => request('street2'),
+                'neighborhood' => request('neighborhood2'),
+                'real_estate_area' => request('real_estate_area2'),
+                'real_estate_number' => request('real_estate_number2'),
+                'division_number' => request('division_number2'),
+                'building' => request('building2'),
+                'floor' => request('floor2'),
+                'phone' => request('phone2'),
+                'fax' => request('fax2'),
+                'mailbox' => request('mailbox2'),
+                'region' => request('region2'),
+                'changed_date' => request('changed_date2')
             ]
 
         );
@@ -104,9 +107,10 @@ class MofSsnAddressController extends Controller
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
             
-            $mof_address=Mof_address::where('company_id',$company->id)->first();
+            $mof_address=$company->mof_address;
+            $ssn_address=$company->ssn_address;
 
-            return view('/client/companies.edit_mof_ssn_address' , ['company' => $company , 'mof_address' => $mof_address]);
+            return view('/client/companies.edit_mof_ssn_address' , ['company' => $company , 'mof_address' => $mof_address , 'ssn_address' => $ssn_address]);
         }
         else  return abort(403);
     }
@@ -124,8 +128,47 @@ class MofSsnAddressController extends Controller
             ], 
 
             [
-                'governorate'  => request('governorate'),
-                'district' => request('district'),
+                'governorate'  => request('governorate1'),
+                'district' => request('district1'),
+                'street' => request('street1'),
+                'neighborhood' => request('neighborhood1'),
+                'real_estate_area' => request('real_estate_area1'),
+                'real_estate_number' => request('real_estate_number1'),
+                'division_number' => request('division_number1'),
+                'building' => request('building1'),
+                'floor' => request('floor1'),
+                'phone' => request('phone1'),
+                'fax' => request('fax1'),
+                'mailbox' => request('mailbox1'),
+                'region' => request('region1'),
+                'changed_date' => request('changed_date1')
+            ]
+
+        );
+
+        Ssn_address::updateOrCreate(
+
+            
+            [
+                'company_id'    => $company->id,
+                
+            ], 
+
+            [
+                'governorate'  => request('governorate2'),
+                'district' => request('district2'),
+                'street' => request('street2'),
+                'neighborhood' => request('neighborhood2'),
+                'real_estate_area' => request('real_estate_area2'),
+                'real_estate_number' => request('real_estate_number2'),
+                'division_number' => request('division_number2'),
+                'building' => request('building2'),
+                'floor' => request('floor2'),
+                'phone' => request('phone2'),
+                'fax' => request('fax2'),
+                'mailbox' => request('mailbox2'),
+                'region' => request('region2'),
+                'changed_date' => request('changed_date2')
             ]
 
         );

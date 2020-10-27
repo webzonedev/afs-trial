@@ -119,7 +119,7 @@ class CompaniesController extends Controller
         $specialemp3->save();
 
 
-        return redirect('/client/companies/'.$company->id.'/mof_address/create');
+        return redirect('/client/companies/'.$company->id.'/mof_ssn_address/create');
 
     }
 
