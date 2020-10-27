@@ -259,12 +259,8 @@
            
             success: function(response){
               $("#Msg").text(response.success);
-              // window.location.href = "/client/companies/{{$company->id}}/files/upload";
             },
-            // error: function(response){
-            //   $("#Msg").text(response.error);
-            //   // window.location.href = "/client/companies/{{$company->id}}/files/upload";
-            // },
+          
 
             
 
