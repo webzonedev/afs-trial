@@ -82,12 +82,13 @@ class CompanyFilesController extends Controller
         
         $files = request('tasjil_sherke');
 
-        
+        $count=0;
         if($files!=null){
             foreach ($files as $file) {
                 if($file!=null){
                 
-               Company_files::updateOrCreate(
+            
+               $f= Company_files::updateOrCreate(
                 
                     ['company_id' => $company->id,
                      'filepath' => $file->storeAs('companyfiles/'.$company->id.'/sijil_tijare_files/tasjil_sherke' , 'st_ts_'. uniqid()),
@@ -96,6 +97,16 @@ class CompanyFilesController extends Controller
                     ]
                 );
 
+                if((!$f->wasRecentlyCreated && $f->wasChanged()) || $f->wasRecentlyCreated){
+                    $count++;
+                }
+                
+                if(!$f->wasRecentlyCreated && !$f->wasChanged()){
+                    $count=0;
+                }
+                
+               
+
                 }
 
               
@@ -103,11 +114,12 @@ class CompanyFilesController extends Controller
             }
      
            
-            return response()->json(['success'=>'تم التّرفيع بنجاح']);
         }
         
+        if($count>0)
+            return response()->json(['msg'=>'تم التّرفيع بنجاح']);
         else
-             return response()->json(['success'=>'لم يتم التّرفيع']);
+             return response()->json(['msg'=>'لم يتم التّرفيع']);
             
         
 

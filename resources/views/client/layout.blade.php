@@ -231,7 +231,34 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 
+
+  <script language="Javascript"> 
+
+          $(document).ready(function() { 
+            if($('#tasjil_sherke').val() ==""){
+                $('#uploadBtn').prop('disabled',true);
+                }
+
+
+             $('#tasjil_sherke').change(function() { 
+
+              if($('#tasjil_sherke').val() ==""){
+                $('#uploadBtn').prop('disabled',true);
+                }
+                else {
+                  $('#uploadBtn').prop('disabled',false);
+                }
+
+            }); 
+
+            
+          });
+           
+  </script>
+
+
   <script language="Javascript">
+
 
     
              $('#uploadBtn').click(function(){
@@ -244,6 +271,8 @@
 
             $('#maform').ajaxForm({
             
+          
+            
 
             beforeSend: function() {
            
@@ -251,15 +280,20 @@
             maProgressBar.width(percentVal);
             maProgressBar.html(percentVal);
             },
+
             uploadProgress: function(event, position, total, percentComplete) {
             var percentVal = percentComplete + '%';
             maProgressBar.width(percentVal)
             maProgressBar.html(percentVal);
+            
             },
-           
+
             success: function(response){
-              $("#Msg").text(response.success);
+              $("#Msg").text(response.msg);
             },
+
+           
+           
           
 
             
@@ -267,6 +301,8 @@
             });
       
             </script>
+
+           
 
 
 

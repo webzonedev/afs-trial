@@ -118,15 +118,19 @@
 
             <div style="display:flex ; margin-bottom:10px" >
 
-            <input type="file" class="form-control form-control-user " id="tasjil_sherke" name="tasjil_sherke[]" 
+            <input type="file" class="form-control form-control-user"  id="tasjil_sherke" name="tasjil_sherke[]" 
             accept="image/* , .pdf" multiple>
 
-            <button href="" class="btn btn-danger btn-user" type="submit" id="uploadBtn" ><i class="fas fa-upload"></i></button>
+           
+
+
+            <button href="" class="btn btn-danger btn-user" type="submit" id="uploadBtn" disabled><i class="fas fa-upload"></i></button>
    
           </div>
 
             <div  class="maProgressBar  progress-bar" role="progressbar" style="width: 0% ; background-color:#d1d3e2; margin-bottom:10px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-
+            
+           
             <div style="margin:auto; text-align:center" >
               <p id="Msg"></p>
             </div>
