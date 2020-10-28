@@ -262,13 +262,15 @@
       
             
             beforeSend: function() {
-           
+            
             var percentVal = '0%';
             maProgressBar.width(percentVal);
             maProgressBar.html(percentVal);
+            
             },
 
             uploadProgress: function(event, position, total, percentComplete) {
+            window.location.hash = '#';
             var percentVal = percentComplete + '%';
             maProgressBar.width(percentVal)
             maProgressBar.html(percentVal);
@@ -277,7 +279,7 @@
 
             success: function(response){
               $("#upload_msg").text(response.msg);
-              window.location.hash = '#';
+             
             },
 
 
