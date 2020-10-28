@@ -108,6 +108,8 @@ Route::get('/client/companies/{company}/files/upload', 'Client\CompanyFilesContr
 
 Route::get('/client/companies/{company}/files/{id}/download', 'Client\CompanyFilesController@download_files');
 
+Route::get('/client/companies/{company}/files/{id}/delete', 'Client\CompanyFilesController@delete_files');
+
 Route::put('/client/companies/{company}/files/upload', 'Client\CompanyFilesController@upload_files');
 
 Route::get('/client/companies/{company}/files/', 'Client\CompanyFilesController@index_files');

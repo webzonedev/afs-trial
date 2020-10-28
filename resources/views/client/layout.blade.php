@@ -234,25 +234,18 @@
 
   <script language="Javascript"> 
 
-          $(document).ready(function() { 
-            if($('#tasjil_sherke').val() ==""){
-                $('#uploadBtn').prop('disabled',true);
-                }
 
 
-             $('#tasjil_sherke').change(function() { 
+          function toggleButton(InputID, ButtonID){
 
-              if($('#tasjil_sherke').val() ==""){
-                $('#uploadBtn').prop('disabled',true);
+              if($('#'+InputID).val() ==""){
+                $('#'+ButtonID).prop('disabled',true);
                 }
                 else {
-                  $('#uploadBtn').prop('disabled',false);
+                  $('#'+ButtonID).prop('disabled',false);
                 }
 
-            }); 
-
-            
-          });
+          }
            
   </script>
 
@@ -260,20 +253,14 @@
   <script language="Javascript">
 
 
-    
-             $('#uploadBtn').click(function(){
-              $(".progress").toggle();
-             });
+     
 
+            maProgressBar = $('#progressbar');
 
-            var maProgressBar = $('.maProgressBar');
-
-
-            $('#maform').ajaxForm({
+ 
+            $('.allUploadForms').ajaxForm({
+      
             
-          
-            
-
             beforeSend: function() {
            
             var percentVal = '0%';
@@ -289,21 +276,25 @@
             },
 
             success: function(response){
-              $("#Msg").text(response.msg);
+              $("#upload_msg").text(response.msg);
+              window.location.hash = '#';
             },
 
-           
-           
-          
-
-            
 
             });
-      
             </script>
 
            
+                    <script>
+                      function getDeleteModal(elementID){
+                        
+                      var hr = $("#"+elementID).attr("href");
 
+                     $("#modalAnchor").attr('href',hr);
+                    
+                    
+                      }
+                      </script>
 
 
   <!-- Bootstrap core JavaScript-->

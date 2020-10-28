@@ -84,20 +84,43 @@
 </div>
 
 
+<br><br>
+
+<h1 class="text-gray-800"> ملفّات شركة {{$company->c_name}}
+<span><a href="/client/companies/{{$company->id}}/files/upload"><i class="fas fa-edit text-gray-800"></i>
+</h1>
+
 
 
 
 <!-- MOF ADDRESS ============ Content Row -->
-<br>
-<h1 class="h3 mb-0 text-danger">مستندات السّجلّ التّجاري - <span class="text-gray-800">شركة</span> 
-<span><a href="/client/companies/{{$company->id}}/files/upload"><i class="fas fa-edit text-gray-800"></i></a></span>
-</h1>
+<br><br>
+
+<h1 class="h3 mb-0 text-danger">مستندات السّجلّ التّجاري</h1>
 <br><br>
 
 
 
 
 <div class="row">
+
+      <!-- Delete Modal-->
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">هل تريد الغاء الملف؟</h5>
+          
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-gray" type="button" data-dismiss="modal">لا</button>
+              <a class="btn btn-danger" href="" id="modalAnchor">
+              الغاء
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -111,18 +134,23 @@
             </div>
             <div class="card-body">
             <!-- tasjil_sherke -->
-            @php
-            $i=0
-            @endphp
-
             @foreach ($files as $file) 
 
-            @php
-            $i++;
-            @endphp
+            
             
                   @if ($file!=null && $file->filetitle=='tasjil_sherke' && $file->category=='sijil_tijare_files')
-                    <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user " type="submit"><i class="fas fa-download"></i> @php echo $i @endphp</a>
+                    <div style="display:flex;margin-left:5px;">
+                    <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+                    &nbsp;&nbsp;
+                    <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+                    data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+                    
+                    <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+                    </a>
+                    </div>
+
+                 
+                    <br>
                   @endif
             @endforeach
                 
@@ -142,7 +170,25 @@
               <h6 class="m-0 font-weight-bold text-danger">النظام الأساسي</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="nizam_asese" name="nizam_asese">
+            @foreach ($files as $file) 
+
+            
+            
+          @if ($file!=null && $file->filetitle=='nizam_asese' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
                   
             </div>
           </div>
@@ -156,7 +202,25 @@
               <h6 class="m-0 font-weight-bold text-danger">إذاعة تجارية</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="ize3a_tijareyye" name="ize3a_tijareyye" >
+            @foreach ($files as $file) 
+
+            
+            
+@if ($file!=null && $file->filetitle=='ize3a_tijareyye' && $file->category=='sijil_tijare_files')
+  <div style="display:flex;margin-left:5px;">
+  <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+  &nbsp;&nbsp;
+  <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+  data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+  
+  <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+  </a>
+  </div>
+
+
+  <br>
+@endif
+@endforeach
             </div>
           </div>
 
@@ -169,7 +233,22 @@
               <h6 class="m-0 font-weight-bold text-danger">شهادة تسجيل</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="shhedit_tasjil_sijil" name="shhedet_tasjil_sijil">
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='shhedit_tasjil_st' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -189,7 +268,22 @@
               <h6 class="m-0 font-weight-bold text-danger">محضر جمعيّة عموميّة</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="mahdar_jam3yye" name="mahdar_jam3yye">
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='mahdar_jam3eyye' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -202,7 +296,22 @@
               <h6 class="m-0 font-weight-bold text-danger">إتفاقية محامي الشّركة</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="itifa2yet_mohame" name="itifa2yet_mohame" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='itifa2yet_mohame' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -216,7 +325,22 @@
               <h6 class="m-0 font-weight-bold text-danger">إفادة وقوعات</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="ifedet_woko3at" name="ifedet_woko3at" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='ifedit_woko3at' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -229,7 +353,22 @@
               <h6 class="m-0 font-weight-bold text-danger">مستندات أخرى</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="others1" name="others1" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='st_others' && $file->category=='sijil_tijare_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -244,9 +383,7 @@
 </div>
 
 
-<h1 class="h3 mb-0 text-danger" >مستندات وزارة الماليّة - <span class="text-gray-800">شركة</span>
-<span><a href="/client/companies/{{$company->id}}/files/upload#mof"><i class="fas fa-edit text-gray-800"></i></a></span>
-</h1>
+<h1 class="h3 mb-0 text-danger" >مستندات وزارة الماليّة </h1>
 <br><br>
 
 <div class="row">
@@ -262,7 +399,22 @@
               </h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="tasjil_meliyye" name="tasjil_meliyye" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='tasjil_meliyye' && $file->category=='mof_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
                      
             </div>
           </div>
@@ -276,7 +428,22 @@
               <h6 class="m-0 font-weight-bold text-danger">شهادة تسجيل VAT</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="tasjil_vat" name="tasjil_vat" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='tasjil_vat' && $file->category=='mof_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -289,7 +456,22 @@
               <h6 class="m-0 font-weight-bold text-danger">مباشرة عمل</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="mobeshrit_3amal" name="mobeshrit_3amal" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='mobeshrit_3amal' && $file->category=='mof_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -302,7 +484,22 @@
               <h6 class="m-0 font-weight-bold text-danger">مستندات أخرى</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="others2" name="others2" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='mof_others' && $file->category=='mof_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -319,9 +516,7 @@
 </div>
 
 
-<h1 class="h3 mb-0 text-danger">مستندات الصندوق الوطني للضمان الاجتماعي - <span class="text-gray-800">شركة</span>
-<span><a href="/client/companies/{{$company->id}}/files/upload#ssn"><i class="fas fa-edit text-gray-800"></i></a></span>
-</h1>
+<h1 class="h3 mb-0 text-danger">مستندات الصندوق الوطني للضمان الاجتماعي </h1>
 
 <br><br>
 
@@ -338,7 +533,22 @@
               </h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="shhedit_tasjil_ssn" name="shhedit_tasjil_ssn" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='tasjil_ssn' && $file->category=='ssn_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
                      
             </div>
           </div>
@@ -352,7 +562,22 @@
               <h6 class="m-0 font-weight-bold text-danger">مستندات أخرى</h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="others3" name="others3" >
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='ssn_others' && $file->category=='ssn_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
             </div>
           </div>
 
@@ -372,9 +597,7 @@
 </div>
 
 
-<h1 class="h3 mb-0 text-danger">مستندات أخرى - <span class="text-gray-800">شركة</span> 
-<span><a href="/client/companies/{{$company->id}}/files/upload#ot"><i class="fas fa-edit text-gray-800"></i></a></span>
-</h1>
+<h1 class="h3 mb-0 text-danger">مستندات أخرى</h1>
 
 <br><br>
 
@@ -391,8 +614,22 @@
               </h6>
             </div>
             <div class="card-body">
-            <input type="file" class="form-control form-control-user " id="others4" name="others4" 
-                       placeholder="الحيّ">
+            @foreach ($files as $file) 
+            @if ($file!=null && $file->filetitle=='f_others' && $file->category=='others_files')
+            <div style="display:flex;margin-left:5px;">
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/download" class="btn btn-danger btn-user btn-block" type="submit"><i class="fas fa-download"></i> {{basename($file->filepath)}}</a>
+            &nbsp;&nbsp;
+            <a href="/client/companies/{{$company->id}}/files/{{$file->id}}/delete" 
+            data-toggle="modal" data-target="#deleteModal" id="{{uniqid()}}" onclick="getDeleteModal(this.id)"> 
+            
+            <i class="fas fa-times text-danger" style="font-size:20px; "></i>
+            </a>
+            </div>
+
+
+            <br>
+          @endif
+          @endforeach
                      
             </div>
           </div>

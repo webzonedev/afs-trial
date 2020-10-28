@@ -57,6 +57,20 @@ class CompanyFilesController extends Controller
 
         }
     }
+
+    public function delete_files(Company $company, $id){
+
+        // Shows a view to edit an existing resource
+        if($company->client_id == Auth::user()->profile_id) {
+            
+            $files=Company_files::find($id);
+            Storage::disk('public')->delete($files->filepath);   
+            Company_files::destroy($id);  
+                
+            return back();
+
+        }
+    }
    
 
     public function before_upload_files(Company $company){
@@ -74,26 +88,37 @@ class CompanyFilesController extends Controller
         else  return abort(403);
     }
 
+
+
+
     public function upload_files(Company $company){
 
         // Shows a view to edit an existing resource
 
-            
-        
-        $files = request('tasjil_sherke');
+        //the input name is equal to the file title.
 
+        $filetit = request('filetit');
+        $filecat = request('filecat');
+        $fileprefix = request('fileprefix');
+
+        
+        $files = request($filetit);
+
+     
+        
+        
         $count=0;
         if($files!=null){
             foreach ($files as $file) {
                 if($file!=null){
                 
-            
+                $extension = $file->getClientOriginalExtension();   
                $f= Company_files::updateOrCreate(
                 
                     ['company_id' => $company->id,
-                     'filepath' => $file->storeAs('companyfiles/'.$company->id.'/sijil_tijare_files/tasjil_sherke' , 'st_ts_'. uniqid()),
-                     'filetitle' => 'tasjil_sherke',
-                     'category' => 'sijil_tijare_files'
+                     'filepath' => $file->storeAs("companyfiles/".$company->id."/".$filecat."/".$filetit , $fileprefix. uniqid().".".$extension),
+                     'filetitle' => $filetit,
+                     'category' => $filecat
                     ]
                 );
 
@@ -120,114 +145,7 @@ class CompanyFilesController extends Controller
             return response()->json(['msg'=>'تم التّرفيع بنجاح']);
         else
              return response()->json(['msg'=>'لم يتم التّرفيع']);
-            
-        
-
-         
-
-            // Company_files::updateOrCreate(
-            //   ['company_id' => $company->id,
-            //   'filepath' => Company_files::req_file('shhedet_tasjil_sijil','companyfiles'),
-            //   'filetitle' => 'shhedit_tasjil_sijil',
-            //   'category' => 'sijil_tijare_files'
-            //   ]
-            // );
-
-            // Company_files::updateOrCreate(
-            //   ['company_id' => $company->id,
-            //  'filepath' => Company_files::req_file('mahdar_jam3yye','companyfiles'),
-            //  'filetitle' => 'mahdar_jam3yye',
-            //  'category' => 'sijil_tijare_files'
-            //  ]);
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('itifa2yet_mohame','companyfiles'),
-            //     'filetitle' => 'itifa2yet_mohame',
-            //     'category' => 'sijil_tijare_files'
-            //     ]);
-
-            //     Company_files::updateOrCreate(
-            // ['company_id' => $company->id,
-            // 'filepath' => Company_files::req_file('ifedet_woko3at','companyfiles'),
-            // 'filetitle' => 'ifedet_woko3at',
-            // 'category' => 'sijil_tijare_files'
-            //         ]);
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('others1','companyfiles'),
-            //     'filetitle' => 'others1',
-            //     'category' => 'sijil_tijare_files'
-            //     ]);
+    }  
 
 
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('tasjil_meliyye','companyfiles'),
-            //     'filetitle' => 'tasjil_meliyye',
-            //     'category' => 'mof_files'
-            //     ]);
-
-
-            //     Company_files::updateOrCreate(
-            //         ['company_id' => $company->id,
-            //         'filepath' => Company_files::req_file('tasjil_vat','companyfiles'),
-            //         'filetitle' => 'tasjil_vat',
-            //         'category' => 'mof_files'
-            //     ]);
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('mobeshrit_3amal','companyfiles'),
-            //     'filetitle' => 'mobeshrit_3amal',
-            //     'category' => 'mof_files'
-            //     ]);
-
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('others2','companyfiles'),
-            //     'filetitle' => 'others2',
-            //     'category' => 'mof_files'
-            //     ]);
-
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('shhedit_tasjil_ssn','companyfiles'),
-            //     'filetitle' => 'shhedit_tasjil_ssn',
-            //     'category' => 'ssn_files'
-            //     ]);
-
-            //     Company_files::updateOrCreate(
-            //     ['company_id' => $company->id,
-            //     'filepath' => Company_files::req_file('others3','companyfiles'),
-            //     'filetitle' => 'others3',
-            //     'category' => 'ssn_files'
-            // ]);
-            // Company_files::updateOrCreate(
-            // ['company_id' => $company->id,
-            // 'filepath' => Company_files::req_file('others4','companyfiles'),
-            // 'filetitle' => 'others4',
-            // 'category' => 'others'
-            // ]);
-            
-
-
-           
-        }
-
-
-
-
-
-    public function update_files(Company $company){
-
-        // Persists the edited resource
-   
-
-
-
-    }
 }
