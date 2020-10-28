@@ -280,6 +280,7 @@
             success: function(response){
               $("#upload_msg").text(response.msg);
               $("#upload_msg").fadeIn('fast').delay(1000).fadeOut('fast');
+              maProgressBar.fadeOut('slow');
             },
 
 
