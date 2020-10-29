@@ -21,6 +21,11 @@ class Company extends Model
         return $this->hasOne(Ssn_address::class);
     }
 
+    public function company_lawyer()
+    {
+        return $this->hasOne(Company_lawyer::class);
+    }
+
     public function client()
     {
         return $this->belongsTo(Client::class);

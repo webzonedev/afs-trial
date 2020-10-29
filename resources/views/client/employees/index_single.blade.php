@@ -7,6 +7,114 @@
 
 <div class="container-fluid">
 
+<!-- Content Row -->
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}" class="myCardLink ">معلومات الشركة</a> <i class="text-danger fas fa-info-circle"></i> </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/mof_ssn_address" class="myCardLink "> العنوان لدى وزارة المالية و الضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
+            
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+         <!-- Earnings (Monthly) Card Example -->
+         <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
+            <!-- <div class="row no-gutters align-items-center">
+            
+              
+            </div> -->
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
+            <!-- <div class="row no-gutters align-items-center">
+            
+              
+            </div> -->
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="" class="myCardLink cardlink-active">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
+            <!-- <div class="row no-gutters align-items-center">
+              
+            </div> -->
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br>
+
+<h1 class="text-gray-800"> موظّفين شركة {{$company->c_name}}</h1>
+
+
+
+
+<!-- MOF ADDRESS ============ Content Row -->
+<br><br>
+
+
 
 
 
@@ -62,7 +170,6 @@
 <a href="/client/companies/{{$company->id}}/employees/register" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء موظّف &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
 
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm ">إنشاء تقرير &nbsp;&nbsp;<i class="fas fa-download fa-sm text-white-50"></i> </a>
 
 
 

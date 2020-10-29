@@ -174,6 +174,26 @@
         </nav>
         <!-- End of Topbar -->
 
+             <!-- Delete Modal-->
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+            </div>
+            <br><br>
+            <p style="padding:5px;margin-top:10px;">لا يمكنك التراجع بعد هذه العملية </p>
+            <div class="modal-footer">
+              <button class="btn btn-gray" type="button" data-dismiss="modal">لا</button>
+              <a class="btn btn-danger" href="" id="modalAnchor">
+              الغاء
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
         <!-- ======================= yield area ================================-->
 
         @yield ('client_home_content')
@@ -231,75 +251,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 
-
-  <script language="Javascript"> 
-
-
-
-          function toggleButton(InputID, ButtonID){
-
-              if($('#'+InputID).val() ==""){
-                $('#'+ButtonID).prop('disabled',true);
-                }
-                else {
-                  $('#'+ButtonID).prop('disabled',false);
-                }
-
-          }
-           
-  </script>
-
-
-  <script language="Javascript">
-
-
-     
-
-            maProgressBar = $('#progressbar');
-
- 
-            $('.allUploadForms').ajaxForm({
-      
-            
-            beforeSend: function() {
-            
-            var percentVal = '0%';
-            maProgressBar.width(percentVal);
-            maProgressBar.html(percentVal);
-            
-            },
-
-            uploadProgress: function(event, position, total, percentComplete) {
-            window.location.hash = '#';
-            var percentVal = percentComplete + '%';
-            maProgressBar.width(percentVal)
-            maProgressBar.html(percentVal);
-            
-            },
-
-            success: function(response){
-              $("#upload_msg").text(response.msg);
-              $("#upload_msg").fadeIn('fast').delay(1000).fadeOut('fast');
-              maProgressBar.fadeIn('fast').delay(2000).fadeOut('slow');
-            },
-
-
-
-            });
-            </script>
-
-           
-                    <script>
-                      function getDeleteModal(elementID){
-                        
-                      var hr = $("#"+elementID).attr("href");
-
-                     $("#modalAnchor").attr('href',hr);
-                    
-                    
-                      }
-                      </script>
-
+  <!-- my js -->
+  <script src="/js/myjs.js"></script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="/vendor/jquery/jquery.min.js"></script>

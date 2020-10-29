@@ -17,7 +17,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="#" class="myCardLink cardlink-active">معلومات الشركة</a> <i class="text-danger fas fa-info-circle"></i> </div>
+            <a href="" class="myCardLink cardlink-active">معلومات الشركة</a> <i class="text-danger fas fa-info-circle"></i> </div>
           </div>
           
         </div>
@@ -26,7 +26,7 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-5 col-md-6 mb-4">
+  <div class="col-xl-4 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
@@ -40,6 +40,25 @@
       </div>
     </div>
   </div>
+
+
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
+           
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >

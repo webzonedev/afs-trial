@@ -26,7 +26,7 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-5 col-md-6 mb-4">
+  <div class="col-xl-4 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
@@ -42,6 +42,25 @@
   </div>
 
 
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
+           
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >
     <div class="card border-left-danger shadow h-100">
@@ -49,7 +68,7 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
+            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
             <!-- <div class="row no-gutters align-items-center">
             
               
@@ -70,7 +89,7 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
+            <a href="/client/companies/{{$company->id}}/employees" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
             <!-- <div class="row no-gutters align-items-center">
               
             </div> -->

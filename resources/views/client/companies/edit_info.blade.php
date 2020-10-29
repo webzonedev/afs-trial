@@ -25,14 +25,14 @@
     </div>
   </div>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
+
+  <div class="col-xl-4 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">العنوان لدى وزارة المالية</a> <i class="text-danger fas fa-file-invoice-dollar"></i> </div>
+            <a href="/client/companies/{{$company->id}}/mof_ssn_address" class="myCardLink "> العنوان لدى وزارة المالية و الضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
             
           </div>
          
@@ -41,14 +41,14 @@
     </div>
   </div>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4 " >
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-2 col-md-6 mb-4 " >
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">العنوان لدى الصندوق الوطني للضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
             <!-- <div class="row no-gutters align-items-center">
             
               
@@ -61,18 +61,15 @@
     </div>
   </div>
 
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
+            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
             
               
-            </div> -->
            
           </div>
         
@@ -158,11 +155,21 @@
             <div class="card-body">
               
             <select class="form-control form-control-user" name="c_type" id="c_type">
-                        <option value="0" >نوع الشّركة</option>
-                        <option value="1" {{ $company != null && $company->c_type == '1' ? 'selected' : '' }}>نوع 1</option>
-                        <option value="2" {{ $company != null && $company->c_type == '2' ? 'selected' : '' }}>نوع 2</option>
-                      </select>
 
+
+                <?php 
+                      $types = App\Company_type::all();
+                      foreach($types as $type){
+                        $var = "";
+
+                        if($company->c_type == $type->type)
+                           $var = 'selected';
+
+                      echo "<option value='$type->type' $var > $type->type</option>";
+                      }                    
+                  ?>
+                
+                </select>
 
             </div>
           </div>

@@ -26,7 +26,7 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-5 col-md-6 mb-4">
+  <div class="col-xl-4 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
@@ -41,6 +41,26 @@
     </div>
   </div>
 
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
+            <!-- <div class="row no-gutters align-items-center">
+            
+              
+            </div> -->
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >
     <div class="card border-left-danger shadow h-100">
@@ -48,11 +68,8 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
+            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
             
-              
-            </div> -->
            
           </div>
         
@@ -69,10 +86,8 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-              
-            </div> -->
+            <a href="/client/companies/{{$company->id}}/employees" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
+            
            
           </div>
         
@@ -109,16 +124,51 @@
               </h6>
             </div>
             <div class="card-body">
-            <select class="form-control form-control-user" id="governorate1" name="governorate1">
+            <select class="form-control form-control-user" id="governorate1" name="governorate1"
+            onclick="selectGovernorate(this.id,'district1');selectDistrict('district1','real_estate_area1');" >
             
-            
-            <option value="0">اختر المحافظة...</option>
-            <option value="بيروت" {{ $mof_address != null && $mof_address->governorate == 'بيروت' ? 'selected' : '' }}>
+
+            <option value="لا شيء" >
+              لا شيء
+            </option>
+
+
+            <option value="بيروت"  {{ $mof_address != null && $mof_address->governorate == 'بيروت' ? 'selected' : '' }}>
               بيروت
 
             </option>
-            <option value="جبل لبنان" {{ $mof_address != null && $mof_address->governorate == 'جبل لبنان' ? 'selected' : '' }} >
+            <option value="جبل لبنان" >
               جبل لبنان
+
+            </option>
+
+            <option value="الشّمال" {{ $mof_address != null && $mof_address->governorate == 'الشّمال' ? 'selected' : '' }}>
+                الشمال
+
+            </option>
+            
+            <option value="الجنوب"  {{ $mof_address != null && $mof_address->governorate == 'الجنوب' ? 'selected' : '' }}>
+                الجنوب
+
+            </option>
+
+            <option value="البقاع" {{ $mof_address != null && $mof_address->governorate == 'البقاع' ? 'selected' : '' }}>
+            البقاع
+
+            </option>
+
+            <option value="النّبطيّة" {{ $mof_address != null && $mof_address->governorate == 'النّبطيّة' ? 'selected' : '' }}>
+            النّبطيّة 
+
+            </option>
+
+            <option value="عكّار" {{ $mof_address != null && $mof_address->governorate == 'عكّار' ? 'selected' : '' }}>
+             عكّار  
+
+            </option>
+
+            <option value="بعلبك الهرمل" {{ $mof_address != null && $mof_address->governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
+                بعلبك الهرمل
 
             </option>
             
@@ -136,15 +186,12 @@
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class="form-control form-control-user " id="district1" name="district1">
+            <select class="district form-control form-control-user " id="district1" name="district1" {{ $mof_address == null ? 'disabled' : '' }}
+            onchange="selectDistrict(this.id,'real_estate_area1');">
 
-            <option value="0">اختر القضاء...</option>
-            <option value="بيروت" {{ $mof_address != null && $mof_address->district == 'بيروت' ? 'selected' : '' }}>
-              بيروت
-            </option>
-            <option value="عاليه" {{ $mof_address != null &&  $mof_address->district == 'عاليه' ? 'selected' : '' }}>
-              عاليه
-            </option>
+            <option value="{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}" selected>{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}</option>
+
+            
             
             </select>
 
@@ -190,8 +237,13 @@
               <h6 class="m-0 font-weight-bold text-danger">المنطقة العقاريّّة</h6>
             </div>
             <div class="card-body">
-            <input type="text" class="form-control form-control-user " id="real_estate_area1" name="real_estate_area1" 
-                      value="{{ $mof_address != null ? $mof_address->real_estate_area : '' }}" placeholder="المنطقة العقارية">
+            <select class="real_estate_area form-control form-control-user" id="real_estate_area1" name="real_estate_area1" {{ $mof_address == null ? 'disabled' : '' }} > 
+
+            <option value="{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء' }}" selected>{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء' }}</option>
+
+
+
+            </select>
             </div>
           </div>
 
@@ -370,32 +422,6 @@
 </h1>
 
 
-<script>
-
-
-function copyAddress(){
-
-
-        $('#governorate2').val( $('#governorate1').val()  ); 
-        $('#district2').val( $('#district1').val()  ); 
-        $('#street2').val( $('#street1').val()  ); 
-        $('#neighborhood2').val( $('#neighborhood1').val()  ); 
-        $('#real_estate_area2').val( $('#real_estate_area1').val()  ); 
-        $('#real_estate_number2').val( $('#real_estate_number1').val()  ); 
-        $('#division_number2').val( $('#division_number1').val()  ); 
-        $('#building2').val( $('#building1').val()  ); 
-        $('#floor2').val( $('#floor1').val()  ); 
-        $('#phone2').val( $('#phone1').val()  ); 
-        $('#fax2').val( $('#fax1').val()  ); 
-        $('#mailbox2').val( $('#mailbox1').val()  ); 
-        $('#region2').val( $('#region1').val()  ); 
-        $('#changed_date2').val( $('#changed_date1').val()  );
-        
-
-}
-
-
-</script>
 
 
     <div class="mysubmitbtn">
@@ -417,15 +443,49 @@ function copyAddress(){
             </div>
             <div class="card-body">
             <select class="form-control form-control-user " id="governorate2" name="governorate2" 
-                      value="بيروت">
+                     onclick="selectGovernorate(this.id,'dsitrict2');selectDistrict('district2','real_estate_area2');" >
 
-            <option value="0">اختر المحافظة...</option>
-            <option value="بيروت" {{ $ssn_address != null && $ssn_address->governorate == 'بيروت' ? 'selected' : '' }}>
+                    @if ($mof_address==null){
+                      <option value="لا شيء">لا شيء</option>
+                    }
+                    @endif
+
+                      <option value="بيروت"  {{ $mof_address != null && $mof_address->governorate == 'بيروت' ? 'selected' : '' }}>
               بيروت
 
             </option>
-            <option value="جبل لبنان" {{ $ssn_address != null && $ssn_address->governorate == 'جبل لبنان' ? 'selected' : '' }}>
+            <option value="جبل لبنان" >
               جبل لبنان
+
+            </option>
+
+            <option value="الشّمال" {{ $mof_address != null && $mof_address->governorate == 'الشّمال' ? 'selected' : '' }}>
+                الشمال
+
+            </option>
+            
+            <option value="الجنوب"  {{ $mof_address != null && $mof_address->governorate == 'الجنوب' ? 'selected' : '' }}>
+                الجنوب
+
+            </option>
+
+            <option value="البقاع" {{ $mof_address != null && $mof_address->governorate == 'البقاع' ? 'selected' : '' }}>
+            البقاع
+
+            </option>
+
+            <option value="النّبطيّة" {{ $mof_address != null && $mof_address->governorate == 'النّبطيّة' ? 'selected' : '' }}>
+            النّبطيّة 
+
+            </option>
+
+            <option value="عكّار" {{ $mof_address != null && $mof_address->governorate == 'عكّار' ? 'selected' : '' }}>
+             عكّار  
+
+            </option>
+
+            <option value="بعلبك الهرمل" {{ $mof_address != null && $mof_address->governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
+                بعلبك الهرمل
 
             </option>
             
@@ -443,16 +503,9 @@ function copyAddress(){
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class="form-control form-control-user" id="district2" name="district2" 
-                      value="{{ old('district2') }}">
-
-            <option value="0">اختر القضاء...</option>
-            <option value="بيروت" {{ $ssn_address != null && $ssn_address->governorate == 'بيروت' ? 'selected' : '' }}>
-              بيروت
-            </option>
-            <option value="عاليه" {{ $ssn_address != null && $ssn_address->governorate == 'عاليه' ? 'selected' : '' }}>
-              عاليه
-            </option>
+            <select class="district form-control form-control-user" id="district2" name="district2"
+            onchange="selectDistrict(this.id,'real_estate_area2');" {{ $mof_address == null ? 'disabled' : '' }} >
+                      <option value="{{ $mof_address != null ? $mof_address->district : 'لا شيء'  }}" selecteds>{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}</option>
             
             </select>
 
@@ -503,8 +556,14 @@ function copyAddress(){
               <h6 class="m-0 font-weight-bold text-danger">المنطقة العقاريّّة</h6>
             </div>
             <div class="card-body">
-            <input type="text" class="form-control form-control-user " id="real_estate_area2" name="real_estate_area2" 
-                      value="{{ $mof_address != null ? $ssn_address->real_estate_area : '' }}" placeholder="المنطقة العقارية">
+            <select class="real_estate_area form-control form-control-user" id="real_estate_area2" name="real_estate_area2"
+            {{ $mof_address == null ? 'disabled' : '' }}>
+
+            <option value="{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء'  }}" selected>{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء'}}</option>
+
+
+
+            </select>
             </div>
           </div>
 

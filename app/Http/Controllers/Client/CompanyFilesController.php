@@ -58,7 +58,7 @@ class CompanyFilesController extends Controller
         }
     }
 
-    public function delete_files(Company $company, $id){
+    public function delete_file(Company $company, $id){
 
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
@@ -66,6 +66,22 @@ class CompanyFilesController extends Controller
             $files=Company_files::find($id);
             Storage::disk('public')->delete($files->filepath);   
             Company_files::destroy($id);  
+                
+            return back();
+
+        }
+    }
+
+    public function delete_all_files(Company $company){
+
+        // Shows a view to edit an existing resource
+        if($company->client_id == Auth::user()->profile_id) {
+            
+            $files=$company->company_files;
+            foreach ($files as $file) {
+                Storage::disk('public')->delete($file->filepath);   
+                Company_files::destroy($file->id);  
+            }
                 
             return back();
 

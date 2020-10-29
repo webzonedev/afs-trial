@@ -100,6 +100,10 @@ Route::post('/client/companies/{company}/mof_ssn_address', 'Client\MofSsnAddress
 
 Route::get('/client/companies/{company}/mof_ssn_address/create', 'Client\MofSsnAddressController@create_mof_ssn_address');
 
+Route::post('/client/companies/{company}/lawyer', 'Client\CompanyLawyerController@store');
+
+Route::get('/client/companies/{company}/lawyer/create', 'Client\CompanyLawyerController@create');
+
 
 
 
@@ -108,7 +112,9 @@ Route::get('/client/companies/{company}/files/upload', 'Client\CompanyFilesContr
 
 Route::get('/client/companies/{company}/files/{id}/download', 'Client\CompanyFilesController@download_files');
 
-Route::get('/client/companies/{company}/files/{id}/delete', 'Client\CompanyFilesController@delete_files');
+Route::get('/client/companies/{company}/files/{id}/delete', 'Client\CompanyFilesController@delete_file');
+
+Route::get('/client/companies/{company}/files/delete', 'Client\CompanyFilesController@delete_all_files');
 
 Route::put('/client/companies/{company}/files/upload', 'Client\CompanyFilesController@upload_files');
 
@@ -135,6 +141,15 @@ Route::get('/client/companies/{company}/mof_ssn_address', 'Client\MofSsnAddressC
 Route::get('/client/companies/{company}/mof_ssn_address/edit', 'Client\MofSsnAddressController@edit_mof_ssn_address');
 
 Route::put('/client/companies/{company}/mof_ssn_address', 'Client\MofSsnAddressController@update_mof_ssn_address');
+
+
+
+
+Route::get('/client/companies/{company}/lawyer', 'Client\CompanyLawyerController@show');
+
+Route::get('/client/companies/{company}/lawyer/edit', 'Client\CompanyLawyerController@edit');
+
+Route::put('/client/companies/{company}/lawyer', 'Client\CompanyLawyerController@update');
 
 
 

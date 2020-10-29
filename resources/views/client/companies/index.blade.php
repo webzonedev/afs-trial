@@ -58,7 +58,6 @@
 
 <a href="/client/companies/create" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء شركة &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm ">إنشاء تقرير &nbsp;&nbsp;<i class="fas fa-download fa-sm text-white-50"></i> </a>
 
 
 

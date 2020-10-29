@@ -98,7 +98,7 @@ class MofSsnAddressController extends Controller
         );
         
 
-        return redirect('/client/companies/'.$company->id.'/mof_ssn_address');
+        return redirect('/client/companies/'.$company->id.'/lawyer/create');
 
     }
 

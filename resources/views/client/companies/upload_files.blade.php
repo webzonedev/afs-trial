@@ -26,7 +26,7 @@
   </div>
 
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-5 col-md-6 mb-4">
+  <div class="col-xl-4 col-md-6 mb-4">
     <div class="card border-left-danger shadow h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
@@ -42,6 +42,25 @@
   </div>
 
 
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-2 col-md-6 mb-4 " >
+    <div class="card border-left-danger shadow h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center smallcardSize">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
+           
+           
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4 " >
     <div class="card border-left-danger shadow h-100">
@@ -50,10 +69,7 @@
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
             <a href="" class="myCardLink cardlink-active">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
             
-              
-            </div> -->
            
           </div>
         
@@ -70,10 +86,8 @@
         <div class="row no-gutters align-items-center smallcardSize">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-              
-            </div> -->
+            <a href="/client/companies/{{$company->id}}/employees" class="myCardLink">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
+        
            
           </div>
         
@@ -89,16 +103,24 @@
 <div style="display:block">
 
 <h1 class="text-gray-800"><a href="/client/companies/{{$company->id}}/files"> ملفّات شركة {{$company->c_name}} <i class="fas fa-folder-open"></i> </a> </h1>
+
+
+
 <!-- MOF ADDRESS ============ Content Row -->
+
+
 <br><br>
 <div style="display:flex; width:30%;" id="progBarDiv">
+
 <div id="progressbar" class="progress-bar" role="progressbar" style="width: 0% ; background-color:#d1d3e2; margin-bottom:10px;border-radius:5px" 
             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
             
            
-            <div style="margin:auto; text-align:center;width:250px;" >
-              <p id="upload_msg"></p>
-            </div>
+      <div style="margin:auto; text-align:center;width:250px;" >
+        <p id="upload_msg"></p>
+      </div>
+
+
 </div>
 </div>
 
@@ -508,7 +530,7 @@
  
             
             <form  method="POST" action="{{action('Client\CompanyFilesController@upload_files' , $company->id) }}" 
-              class="allUploadFormfs" enctype="multipart/form-data" >
+              class="allUploadForms" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
 

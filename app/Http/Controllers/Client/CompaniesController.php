@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use ILluminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
 use App\Company;
+
 use App\Specialemp;
 
 class CompaniesController extends Controller
@@ -49,7 +50,8 @@ class CompaniesController extends Controller
     public function create_info(){
 
         // Shows a view to create a new resource
-
+        
+        
         return view('/client/companies.create_info');
 
     }

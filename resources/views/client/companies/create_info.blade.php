@@ -97,14 +97,16 @@
             <div class="card-body">
 
                       <select class="form-control form-control-user" name="c_type" id="c_type">
-                        <option value="0">نوع الشّركة</option>
-                        <option value="1">نوع 1</option>
-                        <option value="2">نوع 2</option>
-                       
-                        
-                      </select>
-                
 
+
+                      <?php 
+                            $types = App\Company_type::all();
+                            foreach($types as $type){
+                             echo "<option value='$type->type'>$type->type</option>";
+                            }                    
+                        ?>
+                       
+                      </select>
 
             </div>
           </div>
