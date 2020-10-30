@@ -81,6 +81,8 @@ class RegisterController extends Controller
         ]);
     }
 
+  
+
 
     //overriding the register method to disable auto-login
     public function register(Request $request)
@@ -90,7 +92,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: redirect('/');
     }
 
 

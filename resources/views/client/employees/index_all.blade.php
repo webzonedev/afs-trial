@@ -20,7 +20,7 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-danger">الموظفين</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body"> 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead  class="mytableheader">
@@ -47,7 +47,6 @@
                     </tr>
                   
                       @endforeach
-                      
 
 
                    
@@ -61,11 +60,6 @@
 
 
 </div>
-
-<a href="/client/companies/{{$company->id}}/employees/register" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء موظّف &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
-
-
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm ">إنشاء تقرير &nbsp;&nbsp;<i class="fas fa-download fa-sm text-white-50"></i> </a>
 
 
 

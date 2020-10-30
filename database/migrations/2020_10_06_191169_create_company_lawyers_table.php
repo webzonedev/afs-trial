@@ -15,14 +15,14 @@ class CreateCompanyLawyersTable extends Migration
     {
         Schema::create('company_lawyers', function (Blueprint $table) {
             $table->unsignedBigInteger('company_id');
-            $table->string('lawyer_name');
-            $table->string('lawyer_email');
-            $table->string('lawyer_phone');
-            $table->string('lawyer_mobile');
-            $table->string('lawyer_fax');
-            $table->string('lawyer_address');
-            $table->string('law_office_name');
-            $table->string('lawyer_mof_number');
+            $table->string('lawyer_name')->nullable();
+            $table->string('lawyer_email')->nullable();
+            $table->string('lawyer_phone')->nullable();
+            $table->string('lawyer_mobile')->nullable();
+            $table->string('lawyer_fax')->nullable();
+            $table->string('lawyer_address')->nullable();
+            $table->string('law_office_name')->nullable();
+            $table->string('lawyer_mof_number')->nullable();
 
             $table->timestamps();
         });

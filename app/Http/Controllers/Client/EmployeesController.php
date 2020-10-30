@@ -69,9 +69,9 @@ class EmployeesController extends Controller
     public function index_all()
     {
           // Renders a list of a resource
-
           $companies=Company::where('client_id',Auth::user()->profile_id)->get();
-
+          
+          if($companies!=null){
           $employees = collect(new Employee);
           
           foreach($companies as $company){
@@ -80,7 +80,13 @@ class EmployeesController extends Controller
 
             $employees = $employees->collapse();
 
-        return view('/client/employees.index_all', ['company' => $company , 'employees' => $employees]);
+       
+            return view('/client/employees.index_all', ['employees' => $employees]);
+        }
+        else 
+            return view('/client/employees.index_all');
+
+        
 
         
     }
