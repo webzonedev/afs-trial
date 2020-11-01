@@ -47,7 +47,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/employees/{{$employee->id}}/spouse" class="myCardLink">معلومات عن الزوج(ة)</a> <i class="text-danger fas fa-file-invoice-dollar"></i> </div>
+            <a href="/client/companies/{{$company->id}}/employees/{{$employee_address->employee_id}}/spouse" class="myCardLink">معلومات عن الزوج(ة)</a> <i class="text-danger fas fa-file-invoice-dollar"></i> </div>
             
           </div>
          
