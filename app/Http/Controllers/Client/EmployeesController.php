@@ -61,7 +61,6 @@ class EmployeesController extends Controller
         $employee_address->save();
 
         
-        // return redirect('/client/companies/'.$company->id. '/employees/');
         return ddd($user);
 
 
