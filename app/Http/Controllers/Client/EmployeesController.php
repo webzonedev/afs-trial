@@ -31,8 +31,7 @@ class EmployeesController extends Controller
         
         if($company->client_id == Auth::user()->profile_id) 
 
-        //    return view('/client/employees.register_employee',compact('company'));
-            return (dd("hello"));
+           return view('/client/employees.register_employee',compact('company'));
 
         else
             return abort(403);
@@ -43,7 +42,7 @@ class EmployeesController extends Controller
     public function store_employee(Company $company){
 
         
-
+        
         // $user = User::create(request()->validate([
         //     'firstname' => ['required', 'string', 'max:255'],
         //     'lastname' => ['required', 'string', 'max:255'],
@@ -52,9 +51,9 @@ class EmployeesController extends Controller
         //     'password' => ['required', 'string', 'min:8', 'confirmed'],
         // ]));
         
-        
         // $user->password = Hash::make($user->password );
         // $user->save();
+        dd("hello");
 
         // $profile = \App\Employee::create(['company_id'=>$company->id ]);
         // $profile->user()->save(User::find($user->id));
