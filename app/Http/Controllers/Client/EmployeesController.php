@@ -25,21 +25,21 @@ class EmployeesController extends Controller
     }
 
 
-    public function register_employee(Company $company){
+    public function create_employee(){
 
         // Shows a view to create a new resource
         
-        if($company->client_id == Auth::user()->profile_id) 
+        // if($company->client_id == Auth::user()->profile_id) 
 
-           return view('/client/employees.register_employee',compact('company'));
+           return view('/client/employees.create_employee');
 
-        else
-            return abort(403);
+        // else
+            // return abort(403);
 
     }
 
 
-    public function store_employee(Company $company){
+    public function store_employee(){
     
         
         
@@ -54,14 +54,17 @@ class EmployeesController extends Controller
         $user->password = Hash::make($user->password );
         $user->save();
 
-        $profile = \App\Employee::create(['company_id'=>$company->id ]);
+        // $profile = \App\Employee::create(['company_id'=>$company->id ]);
+         $profile = \App\Employee::create();
         $profile->user()->save(User::find($user->id));
         
         // $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
         // $employee_address->save();
 
         
-        return redirect('/client/companies/'.$company->id. '/employees/');
+        // return redirect('/client/employees/'.$company->id. '/employees/');
+
+        return redirect('/client/employees/'.$profile->id);
 
 
 
@@ -73,41 +76,41 @@ class EmployeesController extends Controller
     public function index_all()
     {
           // Renders a list of a resource
-          $companies=Company::where('client_id',Auth::user()->profile_id)->get();
+        //   $companies=Company::where('client_id',Auth::user()->profile_id)->get();
           
-          if($companies!=null){
-          $employees = collect(new Employee);
+        //   if($companies!=null){
+        //   $employees = collect(new Employee);
           
-          foreach($companies as $company){
-              $employees->push(Employee::where('company_id',$company->id)->get());
-            }
+        //   foreach($companies as $company){
+        //       $employees->push(Employee::where('company_id',$company->id)->get());
+        //     }
 
-            $employees = $employees->collapse();
+        //     $employees = $employees->collapse();
 
        
-            return view('/client/employees.index_all', ['employees' => $employees]);
-        }
-        else 
-            return view('/client/employees.index_all');
+        //     return view('/client/employees.index_all', ['employees' => $employees]);
+        // }
+        // else 
+            return view('/client/employees.index_all' );
 
         
 
         
     }
 
-    public function index_single(Company $company)
-    {
-          // Renders a list of a resource
-        if($company->client_id == Auth::user()->profile_id) {
+    // public function index_single(Company $company)
+    // {
+    //       // Renders a list of a resource
+    //     if($company->client_id == Auth::user()->profile_id) {
 
-        $employees=Employee::where('company_id',$company->id)->get();
+    //     $employees=Employee::where('company_id',$company->id)->get();
 
-        return view('/client/employees.index_single', ['company' => $company , 'employees' => $employees]);
+    //     return view('/client/employees.index_single', ['company' => $company , 'employees' => $employees]);
 
-        }
-        else return abort(403);
+    //     }
+    //     else return abort(403);
         
-    }
+    // }
 
     public function show_info(Company $company,Employee $employee){
         
