@@ -172,7 +172,7 @@ Route::get('/client/employees', 'Client\EmployeesController@index_all');
 
 Route::get('/client/employees/create', 'Client\EmployeesController@create_employee');
 
-Route::post('/client/employees/', 'Client\EmployeesController@store_employee');
+Route::post('/client/employees', 'Client\EmployeesController@store_employee');
 
 
 
