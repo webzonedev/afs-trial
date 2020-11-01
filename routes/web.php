@@ -155,20 +155,28 @@ Route::put('/client/companies/{company}', 'Client\CompaniesController@update_inf
 
 //client_employees :
 
-Route::post('/client/employees/', 'Client\EmployeesController@store_employee');
 
 
 Route::get('/client/employees/', 'Client\EmployeesController@index_all');
 
+Route::post('/client/companies/{company}/employees/', 'Client\EmployeesController@store_employee');
+
 Route::get('/client/companies/{company}/employees/', 'Client\EmployeesController@index_single');
 
+Route::get('/client/companies/{company}/employees/create', 'Client\EmployeesController@register_employee');
+
+Route::get('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@show_info');
 
 
 
 
-Route::get('/client/employees/{employee}', 'Client\EmployeesController@show_info');
 
-Route::get('/client/companies/{company}/employees/register', 'Client\EmployeesController@register_employee');
+
+
+
+
+
+
 
 // Route::get('/client/companies/{company}/employees/{employee}/edit', 'Client\EmployeesController@edit_info');
 

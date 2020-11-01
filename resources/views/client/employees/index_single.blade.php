@@ -167,7 +167,7 @@
 
 </div>
 
-<a href="/client/companies/{{$company->id}}/employees/register" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء موظّف &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
+<a href="/client/companies/{{$company->id}}/employees/create" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء موظّف &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
 
 
 
