@@ -60,8 +60,9 @@ class EmployeesController extends Controller
         $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
         $employee_address->save();
 
-
-        return redirect('/client/companies/'.$company->id. '/employees/');
+        
+        // return redirect('/client/companies/'.$company->id. '/employees/');
+        return ddd($user);
 
 
 
