@@ -31,7 +31,8 @@ class EmployeesController extends Controller
         
         if($company->client_id == Auth::user()->profile_id) 
 
-           return view('/client/employees.register_employee',compact('company'));
+        //    return view('/client/employees.register_employee',compact('company'));
+            return (dd("hello"));
 
         else
             return abort(403);
@@ -43,26 +44,26 @@ class EmployeesController extends Controller
 
         
 
-        $user = User::create(request()->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]));
+        // $user = User::create(request()->validate([
+        //     'firstname' => ['required', 'string', 'max:255'],
+        //     'lastname' => ['required', 'string', 'max:255'],
+        //     'username' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]));
         
         
-        $user->password = Hash::make($user->password );
-        $user->save();
+        // $user->password = Hash::make($user->password );
+        // $user->save();
 
-        $profile = \App\Employee::create(['company_id'=>$company->id ]);
-        $profile->user()->save(User::find($user->id));
+        // $profile = \App\Employee::create(['company_id'=>$company->id ]);
+        // $profile->user()->save(User::find($user->id));
         
-        $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
-        $employee_address->save();
+        // $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
+        // $employee_address->save();
 
         
-        return redirect('/client/companies/'.$company->id. '/employees/');
+        // return redirect('/client/companies/'.$company->id. '/employees/');
 
 
 
