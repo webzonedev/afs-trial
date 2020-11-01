@@ -40,28 +40,29 @@ class EmployeesController extends Controller
 
 
     public function store_employee(Company $company){
+        return dd(request());
+    
+        
+        
+        // $user = User::create(request()->validate([
+        //     'firstname' => ['required', 'string', 'max:255'],
+        //     'lastname' => ['required', 'string', 'max:255'],
+        //     'username' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]));
+        
+        // $user->password = Hash::make($user->password );
+        // $user->save();
+
+        // $profile = \App\Employee::create(['company_id'=>$company->id ]);
+        // $profile->user()->save(User::find($user->id));
+        
+        // // $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
+        // // $employee_address->save();
 
         
-        
-        $user = User::create(request()->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]));
-        
-        $user->password = Hash::make($user->password );
-        $user->save();
-
-        $profile = \App\Employee::create(['company_id'=>$company->id ]);
-        $profile->user()->save(User::find($user->id));
-        
-        // $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
-        // $employee_address->save();
-
-        
-        return redirect('/client/companies/'.$company->id. '/employees/');
+        // return redirect('/client/companies/'.$company->id. '/employees/');
 
 
 
