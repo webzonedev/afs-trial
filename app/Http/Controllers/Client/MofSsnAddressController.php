@@ -12,6 +12,20 @@ class MofSsnAddressController extends Controller
 {
     //
 
+              /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
+    
+
     public function show_mof_ssn_address(Company $company){
         
         // Shows a single resource 

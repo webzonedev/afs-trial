@@ -260,3 +260,59 @@ function selectDistrict(dis_id,rea_id){
     
 
 }
+
+
+
+
+//check marital status (employee edit)
+
+function checkMaritalStatus(id) {
+    if($("#" + id).val() == 'أعذب'){
+        $("#married").hide();
+    }
+    else{
+      $("#married").show();
+    }
+
+
+
+}
+
+
+function checkIfLeftJob(id){
+  if($("#"+id).val() != null ) {
+    $("#backToJob").show()
+  }
+  else{
+    $("#backToJob").hide()
+  }
+
+}
+
+function checkIfRegInSsn(id){
+  if($("#"+id).val() == 'كلّا') {
+    $(".ssndetails").hide()
+  }
+  else{
+    $(".ssndetails").show()
+  }
+}
+
+function checkIfOtherCompany(id){
+  if($("#"+id).val() == 'كلّا') {
+    $(".othercompdetails").hide()
+  }
+  else{
+    $(".othercompdetails").show()
+  }
+}
+
+
+function checkIfStudent(id){
+  if($("#"+id).val() == 'كلّا') {
+    $(".isstudent").hide()
+  }
+  else{
+    $(".isstudent").show()
+  }
+}

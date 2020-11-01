@@ -10,8 +10,22 @@ use App\Company;
 use App\Company_lawyer;
 
 
+
 class CompanyLawyerController extends Controller
 {
+
+
+              /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     
 
     public function show(Company $company){

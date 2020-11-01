@@ -165,16 +165,65 @@ Route::get('/client/companies/{company}/employees/register', 'Client\EmployeesCo
 Route::post('/client/companies/{company}/employees/', 'Client\EmployeesController@store_employee');
 
 
-Route::get('/client/companies/{company}/employees/create', 'Client\EmployeesController@create_info');
-
-
-Route::post('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@store_info');
-
 Route::get('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@show_info');
 
 Route::get('/client/companies/{company}/employees/{employee}/edit', 'Client\EmployeesController@edit_info');
 
 Route::put('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@update_info');
+
+Route::get('/client/companies/{company}/employees/{employee}/address', 'Client\EmployeesController@show_address');
+
+Route::get('/client/companies/{company}/employees/{employee}/address/edit', 'Client\EmployeesController@edit_address');
+
+Route::put('/client/companies/{company}/employees/{employee}/address', 'Client\EmployeesController@update_address');
+
+
+Route::get('/client/companies/{company}/employees/{employee}/spouse', 'Client\EmployeeSpouseController@index_spouse');
+
+
+Route::get('/client/companies/{company}/employees/{employee}/spouse/create', 'Client\EmployeeSpouseController@create_spouse');
+
+
+Route::post('/client/companies/{company}/employees/{employee}/spouse/', 'Client\EmployeeSpouseController@store_spouse');
+
+
+Route::get('/client/companies/{company}/employees/{employee}/spouse/{spouse}', 'Client\EmployeeSpouseController@show_spouse');
+
+
+
+Route::get('/client/companies/{company}/employees/{employee}/spouse/{spouse}/edit', 'Client\EmployeeSpouseController@edit_spouse');
+
+
+
+Route::put('/client/companies/{company}/employees/{employee}/spouse/{spouse}', 'Client\EmployeeSpouseController@update_spouse');
+
+
+
+
+
+
+
+Route::get('/client/companies/{company}/employees/{employee}/child', 'Client\EmployeeChildController@index_child');
+
+
+Route::get('/client/companies/{company}/employees/{employee}/child/create', 'Client\EmployeeChildController@create_child');
+
+
+Route::post('/client/companies/{company}/employees/{employee}/child/', 'Client\EmployeeChildController@store_child');
+
+
+Route::get('/client/companies/{company}/employees/{employee}/child/{child}', 'Client\EmployeeChildController@show_child');
+
+
+
+Route::get('/client/companies/{company}/employees/{employee}/child/{child}/edit', 'Client\EmployeeChildController@edit_child');
+
+
+
+Route::put('/client/companies/{company}/employees/{employee}/child/{child}', 'Client\EmployeeChildController@update_child');
+
+
+
 
 });
 
