@@ -36,7 +36,18 @@
                   </thead>
                   <tbody>
                     
-    
+                    @foreach ($employees as $employee)
+                    <tr>
+                      <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
+                      <td><a href="/client/companies/{{$employee->company->id}}/employees/{{$employee->id}}"> {{$employee->user->firstname}} </a></td>
+                      <td>{{$employee->user->email}}</td>
+                      <td>{{$employee->user->firstname}}</td>
+                      <td>{{$employee->company->c_name}}</td>
+                      <td><a href="/client/employees/{{$employee->id}}/edit"><i class="fas fa-edit text-danger"></i></a></td>
+                      <td><a><i class="fas fa-trash text-danger"></i></a></td>
+                    </tr>
+                  
+                      @endforeach
 
 
                    
@@ -52,7 +63,6 @@
 </div>
 
 
-<a href="/client/employees/create" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء موظّف &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
 
 
 <br><br>

@@ -20,20 +20,20 @@ class Employee extends Model
       return $this->belongsTo(Company::class);
   }
 
-//   public function address()
-//   {
-//       return $this->hasOne(Employee_address::class);
-//   }
+  public function address()
+  {
+      return $this->hasOne(Employee_address::class);
+  }
 
-//   public function spouse()
-//   {
-//       return $this->hasMany(Employee_spouse::class);
-//   }
+  public function spouse()
+  {
+      return $this->hasMany(Employee_spouse::class);
+  }
 
-//   public function child()
-//   {
-//       return $this->hasMany(Employee_child::class);
-//   }
+  public function child()
+  {
+      return $this->hasMany(Employee_child::class);
+  }
 
 
   
