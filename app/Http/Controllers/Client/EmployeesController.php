@@ -126,88 +126,88 @@ class EmployeesController extends Controller
 
  
 
-    public function edit_info(Company $company,Employee $employee){
+    // public function edit_info(Company $company,Employee $employee){
 
-        // Shows a view to edit an existing resource
+    //     // Shows a view to edit an existing resource
 
-        if($company->client_id == Auth::user()->profile_id) {
+    //     if($company->client_id == Auth::user()->profile_id) {
             
-        if($employee->company_id == $company->id) 
-             return view('/client/employees.edit_info', ['company' => $company , 'employee' => $employee]);
-        else 
-            return abort(404);
-        }
-        else
-            return abort(403);
+    //     if($employee->company_id == $company->id) 
+    //          return view('/client/employees.edit_info', ['company' => $company , 'employee' => $employee]);
+    //     else 
+    //         return abort(404);
+    //     }
+    //     else
+    //         return abort(403);
 
-    }
+    // }
 
-    public function update_info(Company $company,Employee $employee){
+    // public function update_info(Company $company,Employee $employee){
 
-        // Persists the edited resource
+    //     // Persists the edited resource
         
-       $employee->update([
-            'e_father' => request('e_father'),
-            'e_mother' => request('e_mother'),
-            'e_sex' => request('e_sex'),
-            'e_nationality' => request('e_nationality'),
-            'e_religion' => request('e_religion'),
-            'e_birthdate' => request('e_birthdate'),
-            'e_birthplace' => request('e_birthplace'),
-            'record_number' => request('record_number'),
-            'record_place' => request('record_place'),
-            'id_car_number' => request('id_car_number'),
-            'e_id_governorate' => request('e_id_governorate'),
-            'e_id_district' => request('e_id_district'),
-            'e_id_rea' => request('e_id_rea'),
-            'marital_status' => request('marital_status'),
-            'job_desc' => request('job_desc'),
-            'job_type' => request('job_type'),
-            'work_time' => request('work_time'),
-            'salary_type' => request('salary_type'),
-            'start_working_date' => request('start_working_date'),
-            'left_working_date' => request('left_working_date'),
-            'back_working_date' => request('back_working_date'),
-            'e_mof_number' => request('e_mof_number'),
-            'e_mof_date' => request('e_mof_date'),
-            'ssn_isregistered' => request('ssn_isregistered'),
-            'e_ssn_number' => request('e_ssn_number'),
-            'e_ssn_date' => request('e_ssn_date'),
-            'spouse_works' => request('spouse_works'),
-            'family_compensation' => request('family_compensation'),
-            'children_compensation_count' => request('children_compensation_count'),
-            'income_tax_concession' => request('income_tax_concession'),
-            'itc_children_count' => request('itc_children_count'),
-            'salary_basis' => request('salary_basis'),
-            'daily_transportation' => request('daily_transportation'),
-            'working_days' => request('working_days'),
-            'representation_allowance' => request('representation_allowance'),
-            'housing_allowance' => request('housing_allowance'),
-            'food_voucher' => request('food_voucher'),
-            'cash_food_allowance' => request('cash_food_allowance'),
-            'other_benefits' => request('other_benefits'),
-            'other_company' => request('other_company'),
-            'other_company_name' => request('other_company_name'),
-            'other_company_mofnumber' => request('other_company_mofnumber'),
-            'other_company_ssnnumber' => request('other_company_ssnnumber')
+    //    $employee->update([
+    //         'e_father' => request('e_father'),
+    //         'e_mother' => request('e_mother'),
+    //         'e_sex' => request('e_sex'),
+    //         'e_nationality' => request('e_nationality'),
+    //         'e_religion' => request('e_religion'),
+    //         'e_birthdate' => request('e_birthdate'),
+    //         'e_birthplace' => request('e_birthplace'),
+    //         'record_number' => request('record_number'),
+    //         'record_place' => request('record_place'),
+    //         'id_car_number' => request('id_car_number'),
+    //         'e_id_governorate' => request('e_id_governorate'),
+    //         'e_id_district' => request('e_id_district'),
+    //         'e_id_rea' => request('e_id_rea'),
+    //         'marital_status' => request('marital_status'),
+    //         'job_desc' => request('job_desc'),
+    //         'job_type' => request('job_type'),
+    //         'work_time' => request('work_time'),
+    //         'salary_type' => request('salary_type'),
+    //         'start_working_date' => request('start_working_date'),
+    //         'left_working_date' => request('left_working_date'),
+    //         'back_working_date' => request('back_working_date'),
+    //         'e_mof_number' => request('e_mof_number'),
+    //         'e_mof_date' => request('e_mof_date'),
+    //         'ssn_isregistered' => request('ssn_isregistered'),
+    //         'e_ssn_number' => request('e_ssn_number'),
+    //         'e_ssn_date' => request('e_ssn_date'),
+    //         'spouse_works' => request('spouse_works'),
+    //         'family_compensation' => request('family_compensation'),
+    //         'children_compensation_count' => request('children_compensation_count'),
+    //         'income_tax_concession' => request('income_tax_concession'),
+    //         'itc_children_count' => request('itc_children_count'),
+    //         'salary_basis' => request('salary_basis'),
+    //         'daily_transportation' => request('daily_transportation'),
+    //         'working_days' => request('working_days'),
+    //         'representation_allowance' => request('representation_allowance'),
+    //         'housing_allowance' => request('housing_allowance'),
+    //         'food_voucher' => request('food_voucher'),
+    //         'cash_food_allowance' => request('cash_food_allowance'),
+    //         'other_benefits' => request('other_benefits'),
+    //         'other_company' => request('other_company'),
+    //         'other_company_name' => request('other_company_name'),
+    //         'other_company_mofnumber' => request('other_company_mofnumber'),
+    //         'other_company_ssnnumber' => request('other_company_ssnnumber')
             
-       ]); 
+    //    ]); 
 
-        $employee->user->update([
-            'firstname' => request('e_firstname'),
-            'lastname' => request('e_lastname')
-        ]);
+    //     $employee->user->update([
+    //         'firstname' => request('e_firstname'),
+    //         'lastname' => request('e_lastname')
+    //     ]);
 
-        if(request('marital_status')=='متزوّج'){
-            // $employee->
-        }
-
-
-        return redirect('/client/companies/' . $company->id . '/employees/' . $employee->id);
+    //     // if(request('marital_status')=='متزوّج'){
+    //     //     // $employee->
+    //     // }
 
 
+    //     return redirect('/client/companies/' . $company->id . '/employees/' . $employee->id);
 
-    }
+
+
+    // }
 
     // public function show_address(Company $company,Employee $employee){
         

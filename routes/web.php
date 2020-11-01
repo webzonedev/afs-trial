@@ -167,9 +167,9 @@ Route::post('/client/companies/{company}/employees/', 'Client\EmployeesControlle
 
 Route::get('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@show_info');
 
-Route::get('/client/companies/{company}/employees/{employee}/edit', 'Client\EmployeesController@edit_info');
+// Route::get('/client/companies/{company}/employees/{employee}/edit', 'Client\EmployeesController@edit_info');
 
-Route::put('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@update_info');
+// Route::put('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@update_info');
 
 // Route::get('/client/companies/{company}/employees/{employee}/address', 'Client\EmployeesController@show_address');
 
