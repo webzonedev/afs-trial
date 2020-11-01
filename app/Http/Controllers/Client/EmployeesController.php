@@ -43,26 +43,25 @@ class EmployeesController extends Controller
 
         
         
-        // $user = User::create(request()->validate([
-        //     'firstname' => ['required', 'string', 'max:255'],
-        //     'lastname' => ['required', 'string', 'max:255'],
-        //     'username' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-        // ]));
+        $user = User::create(request()->validate([
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]));
         
-        // $user->password = Hash::make($user->password );
-        // $user->save();
-        dd("hello");
+        $user->password = Hash::make($user->password );
+        $user->save();
 
-        // $profile = \App\Employee::create(['company_id'=>$company->id ]);
-        // $profile->user()->save(User::find($user->id));
+        $profile = \App\Employee::create(['company_id'=>$company->id ]);
+        $profile->user()->save(User::find($user->id));
         
-        // $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
-        // $employee_address->save();
+        $employee_address= \App\Employee_address::create(['employee_id'=>$profile->id ]);
+        $employee_address->save();
 
         
-        // return redirect('/client/companies/'.$company->id. '/employees/');
+        return redirect('/client/companies/'.$company->id. '/employees/');
 
 
 
@@ -210,74 +209,74 @@ class EmployeesController extends Controller
 
     }
 
-    public function show_address(Company $company,Employee $employee){
+    // public function show_address(Company $company,Employee $employee){
         
-        // Shows a single resource 
-        if($company->client_id == Auth::user()->profile_id) {
+    //     // Shows a single resource 
+    //     if($company->client_id == Auth::user()->profile_id) {
 
-            if($employee->company_id == $company->id){
-            $employee_address = $employee->address;
-                return view('/client/employees.show_address', ['company' => $company , 'employee_address' => $employee_address]);
-            }
-            else return abort(404);
-        }
+    //         if($employee->company_id == $company->id){
+    //         $employee_address = $employee->address;
+    //             return view('/client/employees.show_address', ['company' => $company , 'employee_address' => $employee_address]);
+    //         }
+    //         else return abort(404);
+    //     }
 
-        else
-            return abort(403);
-    }
+    //     else
+    //         return abort(403);
+    // }
 
 
-    public function edit_address(Company $company,Employee $employee){
+    // public function edit_address(Company $company,Employee $employee){
 
-        // Shows a view to edit an existing resource
+    //     // Shows a view to edit an existing resource
 
-        if($company->client_id == Auth::user()->profile_id) {
+    //     if($company->client_id == Auth::user()->profile_id) {
             
-        if($employee->company_id == $company->id) {
-            $employee_address = $employee->address;
-             return view('/client/employees.edit_address', ['company' => $company , 'employee_address' => $employee_address]);
-        }
-        else 
-            return abort(404);
-        }
-        else
-            return abort(403);
+    //     if($employee->company_id == $company->id) {
+    //         $employee_address = $employee->address;
+    //          return view('/client/employees.edit_address', ['company' => $company , 'employee_address' => $employee_address]);
+    //     }
+    //     else 
+    //         return abort(404);
+    //     }
+    //     else
+    //         return abort(403);
 
-    }
+    // }
 
-    public function update_address(Company $company,Employee $employee){
+    // public function update_address(Company $company,Employee $employee){
 
-        // Persists the edited resource
-        $employee_address = $employee->address;
-       $employee_address->update([
-            'e_governorate' => request('e_governorate'),
-            'e_district' => request('e_district'),
-            'e_rea' => request('e_rea'),
-            'e_town' => request('e_town'),
-            'e_street' => request('e_street'),
-            'e_neighborhood' => request('e_neighborhood'),
-            'e_building' => request('e_building'),
-            'e_floor' => request('e_floor'),
-            'e_rea_number' => request('e_rea_number'),
-            'e_division_number' => request('e_division_number'),
-            'e_phone' => request('e_phone'),
-            'e_other_phone' => request('e_other_phone'),
-            'e_fax' => request('e_fax'),
-            'e_mailbox' => request('e_mailbox')
+    //     // Persists the edited resource
+    //     $employee_address = $employee->address;
+    //    $employee_address->update([
+    //         'e_governorate' => request('e_governorate'),
+    //         'e_district' => request('e_district'),
+    //         'e_rea' => request('e_rea'),
+    //         'e_town' => request('e_town'),
+    //         'e_street' => request('e_street'),
+    //         'e_neighborhood' => request('e_neighborhood'),
+    //         'e_building' => request('e_building'),
+    //         'e_floor' => request('e_floor'),
+    //         'e_rea_number' => request('e_rea_number'),
+    //         'e_division_number' => request('e_division_number'),
+    //         'e_phone' => request('e_phone'),
+    //         'e_other_phone' => request('e_other_phone'),
+    //         'e_fax' => request('e_fax'),
+    //         'e_mailbox' => request('e_mailbox')
           
  
-       ]); 
+    //    ]); 
 
-        $employee->user->update([
-            'email' => request('e_email')
-        ]);
-
-
-        return redirect('/client/companies/' . $company->id . '/employees/' . $employee->id . '/address');
+    //     $employee->user->update([
+    //         'email' => request('e_email')
+    //     ]);
 
 
+    //     return redirect('/client/companies/' . $company->id . '/employees/' . $employee->id . '/address');
 
-    }
+
+
+    // }
 
 
 
