@@ -35,7 +35,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($employees as $employee)
+                    
+                    <!-- @foreach ($employees as $employee)
                     <tr>
                       <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
                       <td><a href="/client/companies/{{$employee->company->id}}/employees/{{$employee->id}}"> {{$employee->user->firstname}} </a></td>
@@ -46,7 +47,7 @@
                       <td><a><i class="fas fa-trash text-danger"></i></a></td>
                     </tr>
                   
-                      @endforeach
+                      @endforeach -->
 
 
                    
