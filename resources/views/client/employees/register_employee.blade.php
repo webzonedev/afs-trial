@@ -4,7 +4,7 @@
 
 
 <div class="card-body">
-                    <form method="POST" action="/client/companies/{company}/employees/">
+                    <form method="POST" action="/client/companies/{{$company->id}/employees/">
                         @csrf
 
                         <div class="form-group row">
