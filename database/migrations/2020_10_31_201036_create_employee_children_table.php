@@ -50,6 +50,6 @@ class CreateEmployeeChildrenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_childrens');
+        Schema::dropIfExists('employee_children');
     }
 }
