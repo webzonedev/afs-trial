@@ -36,12 +36,12 @@ class ClientsController extends Controller
         return view('/admin/clients.index', ['clients' => $clients]);
     }
 
-    public function show (Client $client){
+    // public function show (Client $client){
         
-        // Renders a list of a resource
+    //     // Renders a list of a resource
 
-        return view('/admin/clients.show' , ['client' => $client]);
-    }
+    //     return view('/admin/clients.show' , ['client' => $client]);
+    // }
 
     public function create (){
         
@@ -69,7 +69,7 @@ class ClientsController extends Controller
         $profile = \App\Client::create();
         $profile->user()->save(User::find($user->id));
 
-        return redirect('/admin/clients/'.$profile->id);
+        return redirect('/admin/clients');
     }
 
 

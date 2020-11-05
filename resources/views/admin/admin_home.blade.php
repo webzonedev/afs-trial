@@ -110,8 +110,7 @@
                       <th>إسم مستخدم العميل</th>
                       <th>البريد الالكتروني للعميل</th>
                       <th>الشركات التابعة للعميل</th>
-                      <th>تعديل</th>
-                      <th>الغاء</th>
+           
                     </tr>
                   </thead>
                   <tbody>
@@ -136,8 +135,7 @@
                         @endforeach
 
                       </td>
-                      <td><a href="/admin/client/{{$client->id}}/edit"><i class="fas fa-edit text-danger"></i></a></td>
-                      <td><a><i class="fas fa-trash text-danger"></i></a></td>
+                     
                     </tr>
                   
                       @endforeach
