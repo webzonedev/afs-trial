@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use ILluminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
 use App\Company;
-use App\Company_files;
+use App\My_files;
 use Doctrine\DBAL\Driver\SQLSrv\LastInsertId;
 
 class CompanyFilesController extends Controller
@@ -32,10 +32,7 @@ class CompanyFilesController extends Controller
         // Shows a single resource 
         if($company->client_id == Auth::user()->profile_id) {
             
-            $files = $company->company_files;
-
-            
-
+            $files = $company->My_files;
 
             return view('/client/companies.index_files', ['company' => $company , 'files'=>$files]);
 
@@ -51,7 +48,7 @@ class CompanyFilesController extends Controller
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
             
-            $files=Company_files::find($id);
+            $files=My_files::find($id);
 
             return Storage::download($files->filepath);         
 
@@ -63,9 +60,9 @@ class CompanyFilesController extends Controller
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
             
-            $files=Company_files::find($id);
+            $files=My_files::find($id);
             Storage::disk('public')->delete($files->filepath);   
-            Company_files::destroy($id);  
+            My_files::destroy($id);  
                 
             return back();
 
@@ -77,10 +74,10 @@ class CompanyFilesController extends Controller
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
             
-            $files=$company->company_files;
+            $files=$company->My_files;
             foreach ($files as $file) {
                 Storage::disk('public')->delete($file->filepath);   
-                Company_files::destroy($file->id);  
+                My_files::destroy($file->id);  
             }
                 
             return back();
@@ -94,12 +91,8 @@ class CompanyFilesController extends Controller
         // Shows a view to edit an existing resource
         if($company->client_id == Auth::user()->profile_id) {
             
-            $files=$company->company_files;
 
-            
-         
-
-            return view('/client/companies.upload_files' , ['company' => $company , 'files'=>$files]);
+            return view('/client/companies.upload_files' , ['company' => $company ]);
         }
         else  return abort(403);
     }
@@ -129,7 +122,7 @@ class CompanyFilesController extends Controller
                 if($file!=null){
                 
                 $extension = $file->getClientOriginalExtension();   
-               $f= Company_files::updateOrCreate(
+               $f= My_files::updateOrCreate(
                 
                     ['company_id' => $company->id,
                      'filepath' => $file->storeAs("companyfiles/".$company->id."/".$filecat."/".$filetit , $fileprefix. uniqid().".".$extension),

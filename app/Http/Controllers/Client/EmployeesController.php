@@ -99,7 +99,7 @@ class EmployeesController extends Controller
     public function index_single(Company $company)
     {
           // Renders a list of a resource
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id ) {
 
         $employees=Employee::where('company_id',$company->id)->get();
 
@@ -113,7 +113,7 @@ class EmployeesController extends Controller
     public function show_info(Company $company,Employee $employee){
         
         // Shows a single resource 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id  && $employee->company_id==$company->id) {
 
             if($employee->company_id == $company->id)
                 return view('/client/employees.show_info', ['company' => $company , 'employee' => $employee]);
@@ -131,7 +131,7 @@ class EmployeesController extends Controller
 
         // Shows a view to edit an existing resource
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id  && $employee->company_id==$company->id) {
             
         if($employee->company_id == $company->id) 
              return view('/client/employees.edit_info', ['company' => $company , 'employee' => $employee]);
@@ -213,11 +213,11 @@ class EmployeesController extends Controller
     public function show_address(Company $company,Employee $employee){
         
         // Shows a single resource 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id  && $employee->company_id==$company->id) {
 
             if($employee->company_id == $company->id){
             $employee_address = $employee->address;
-                return view('/client/employees.show_address', ['company' => $company , 'employee_address' => $employee_address]);
+                return view('/client/employees.show_address', ['company' => $company , 'employee' => $employee ,'employee_address' => $employee_address]);
             }
             else return abort(404);
         }
@@ -231,11 +231,11 @@ class EmployeesController extends Controller
 
         // Shows a view to edit an existing resource
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id  && $employee->company_id==$company->id) {
             
         if($employee->company_id == $company->id) {
             $employee_address = $employee->address;
-             return view('/client/employees.edit_address', ['company' => $company , 'employee_address' => $employee_address]);
+             return view('/client/employees.edit_address', ['company' => $company , 'employee' => $employee ,'employee_address' => $employee_address]);
         }
         else 
             return abort(404);

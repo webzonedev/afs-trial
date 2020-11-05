@@ -41,7 +41,7 @@
                       <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
                       <td><a href="/client/companies/{{$employee->company->id}}/employees/{{$employee->id}}"> {{$employee->user->firstname}} </a></td>
                       <td>{{$employee->user->email}}</td>
-                      <td>{{$employee->user->firstname}}</td>
+                      <td>{{$employee->address->e_phone}} | {{$employee->address->e_other_phone}}</td>
                       <td>{{$employee->company->c_name}}</td>
                       <td><a href="/client/employees/{{$employee->id}}/edit"><i class="fas fa-edit text-danger"></i></a></td>
                       <td><a><i class="fas fa-trash text-danger"></i></a></td>

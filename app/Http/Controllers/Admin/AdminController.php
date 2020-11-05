@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Admin;
+use App\Client;
 
 class AdminController extends Controller
 {
@@ -27,6 +28,12 @@ class AdminController extends Controller
         
         // Renders a list of a resource
 
-        return view('/admin/admin_home');
-    }
+        $clients = Client::all();
+        return view('/admin/admin_home' , ['clients' => $clients] );
+
+    
+}
+
+
+
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company_files extends Model
+class My_files extends Model
 {
     
 
@@ -13,6 +13,11 @@ class Company_files extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
     }
 
 

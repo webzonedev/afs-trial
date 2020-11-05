@@ -3,7 +3,16 @@
 @section ('client_home_content')
 
 
-<div class="card-body">
+
+<div class="container-fluid">
+
+
+
+
+<!-- Content Row -->
+    <div class="row">
+         <div class="col-lg-12 mb-4">
+         <div class="card-body">
                     <form method="POST" action="/client/companies/{{$company->id}}/employees">
                         @csrf
 
@@ -95,6 +104,12 @@
                         </div>
                     </form>
                 </div>
+
+                </div>
+    </div>  
+
+
+<br><br>
 
 
 

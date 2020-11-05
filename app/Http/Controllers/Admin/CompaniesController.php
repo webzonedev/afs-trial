@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Company;
+use App\Specialemp;
+
 
 class CompaniesController extends Controller
 {
@@ -29,68 +31,19 @@ class CompaniesController extends Controller
     }
 
     
-    public function show_info($id){
+    public function show_info(Company $company){
         
         // Shows a single resource 
 
-        $company = Company::find($id);
 
-        return view('/admin/companies.show_info', ['company' => $company]);
+        $specialemps = Specialemp::where('company_id',$company->id)->get();
 
-
-    }
-
-    public function show_mof_address($id){
-        
-        // Shows a single resource 
-
-        $company = Company::find($id);
-
-        return view('/admin/companies.show_mof_address', ['company' => $company]);
+        return view('/admin/companies.show_info', ['company' => $company ,  'specialemps' => $specialemps]);
 
 
     }
 
-    public function show_ssn_address($id){
-        
-        // Shows a single resource 
 
-        $company = Company::find($id);
-
-        return view('/admin/companies.show_ssn_address', ['company' => $company]);
-
-
-    }
-
-    // public function create(){
-
-    //     // Shows a view to create a new resource
-
-    // }
-
-    // public function store(){
-
-    //     // Persists the new resource
-
-    // }
-
-    // public function edit(){
-
-    //     // Shows a view to edit an existing resource
-
-    // }
-
-    // public function update(){
-
-    //     // Persists the edited resource
-
-    // }
-
-    public function destroy(){
-
-        // Deletes the resource
-
-    }
 
 
 

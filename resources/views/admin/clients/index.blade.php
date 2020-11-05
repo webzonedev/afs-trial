@@ -18,31 +18,51 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-danger">العملاء</h6>
+              <h6 class="m-0 font-weight-bold text-danger">قائمة العملاء</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead  class="mytableheader">
                     <tr>
                       <th>صورة العميل</th>
                       <th>إسم العميل</th>
-                      <th>اسم مستخدم العميل</th>
+                      <th>إسم مستخدم العميل</th>
                       <th>البريد الالكتروني للعميل</th>
+                      <th>الشركات التابعة للعميل</th>
+                      <th>تعديل</th>
+                      <th>الغاء</th>
                     </tr>
                   </thead>
                   <tbody>
+                    
                     @foreach ($clients as $client)
-                    <?php
-                    $c= App\User::where(['profile_id' => $client->id , 'profile_type' => 'App\Client'])->first();
-                    ?>
                     <tr>
                       <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
-                      <td><a href="" >{{$c->firstname}} {{ $c->lastname}}</a></td>
-                      <td>{{$c->username}}</td>
-                      <td>{{$c->email}}</td>
+                      <td><a href=""> {{$client->user->firstname}}  {{$client->user->lastname}} </a></td>
+                      <td>{{$client->user->username}}</td>
+                      <td>{{$client->user->email}}</td>
+                      <td>
+                        @php 
+                        $companies = $client->company;
+                        $i=0;
+                        @endphp
+                        @foreach ($companies as $company)
+                        @if($i>=1) | @endif
+                          <a href="/admin/companies/{{$company->id}}">{{$company->c_name}}</a>
+                          
+
+                          @php $i++; @endphp
+                        @endforeach
+
+                      </td>
+                      <td><a href="/admin/client/{{$client->id}}/edit"><i class="fas fa-edit text-danger"></i></a></td>
+                      <td><a><i class="fas fa-trash text-danger"></i></a></td>
                     </tr>
-                    @endforeach
+                  
+                      @endforeach
+
+
                    
                   </tbody>
                 </table>
@@ -59,7 +79,6 @@
 <a href="/admin/clients/create" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm " style="margin:10px;">إنشاء عميل &nbsp;&nbsp;<i class="fas fa-plus fa-sm text-white-50"></i> </a>
 
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm ">إنشاء تقرير &nbsp;&nbsp;<i class="fas fa-download fa-sm text-white-50"></i> </a>
 
 
 

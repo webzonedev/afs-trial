@@ -29,7 +29,6 @@
                       <th>إسم الشّركة</th>
                       <th>البريد الالكتروني للشّركة</th>
                       <th>نوع الشّركة</th>
-                      <th>المدير المسؤول عن الشركة (ممثل الشركة القانوني)</th>
                       <th>العميل</th>
                     </tr>
                   </thead>
@@ -41,7 +40,6 @@
                       <td><a href="companies/{{$company->id}}"> {{$company->c_name}} </a></td>
                       <td>{{$company->c_email}}</td>
                       <td>{{$company->c_type}}</td>
-                      <td> فلان فلان </td>
                       <th>{{$company->client->user->firstname}}</th>
                     </tr>
                     @endforeach
@@ -57,7 +55,6 @@
 
 </div>
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm ">إنشاء تقرير &nbsp;&nbsp;<i class="fas fa-download fa-sm text-white-50"></i> </a>
 
 
 

@@ -21,7 +21,6 @@
 
 
 
-
    
 
 </head>
@@ -35,7 +34,7 @@
     <ul class="navbar-nav bg-white sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
           
         <div class="sidebar-brand-icon ">
           <i class="text-danger fas fa-wallet"></i>
@@ -57,19 +56,55 @@
 
 
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-      <a class="nav-link" href="/client/companies">
-          <span><i class="fas fa-building"></i> &nbsp; الشركات</span>
-      </a>
+       <!-- Nav Item - Pages Collapse Menu -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+          <span>  <i  class="fas fa-building"></i> &nbsp; الشركات </span>
         </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded ">
+
+          <a class="collapse-item" href="/client/companies"><i class="fas fa-list-ul"></i> قائمة الشركات </a>
+           
+              <?php 
+               $my_client = \App\Client::find(Auth::user()->profile_id);
+               $my_companies = $my_client->company
+              ?>
+            
+            @if ($my_companies!=null)
+              @foreach($my_companies as $my_company)
+
+                         <!-- Divider -->
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <a class="collapse-item" href="/client/companies/{{$my_company->id}}"><i class="fas fa-building"></i> شركة {{$my_company->c_name}} </a>
+             @endforeach
+            @endif
+
+            <a class="collapse-item" href="/client/companies/create"><i class="fas fa-plus-square"></i> إنشاء شركة </a>
+            
+            
+          </div>
+        </div>
       </li>
 
-      <li class="nav-item">
-      <a class="nav-link" href="/client/employees">
-          <span><i class="fas fa-users"></i> &nbsp; الموظّفين</span>
-      </a>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <span>  <i  class="fas fa-users"></i> &nbsp; الموظّفين </span>
         </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded ">
+
+          <a class="collapse-item" href="/client/employees"><i class="fas fa-list-ul"></i> قائمة الموظّفين </a>
+           
+        
+              
+            
+           
+            
+            
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -148,15 +183,27 @@
               
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+
+              <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  الملف الشخصي
+                  اسم المستخدم:
+                  @auth
+                 {{Auth::user()->username}} 
+                 @endauth
                 </a>
+
+
+                <div class="dropdown-divider"></div>
+
+
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  الإعدادات
+                  الملف الشخصي
                 </a>
+               
                 
+              
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -200,15 +247,7 @@
 
         <!-- ======================= yield area ================================-->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; AFS 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+ 
 
     </div>
     <!-- End of Content Wrapper -->
@@ -282,5 +321,13 @@
 
   
 </body>
-
+     <!-- Footer -->
+     <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; AFS 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 </html>

@@ -30,7 +30,7 @@
     <ul class="navbar-nav bg-white sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
           
         <div class="sidebar-brand-icon ">
           <i class="text-danger fas fa-wallet"></i>
@@ -42,7 +42,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/client">
+        <a class="nav-link" href="/employee">
           <i class="fas fa-home"></i>
           <span>الصفحة الرئيسيّة</span></a>
       </li>
@@ -54,8 +54,8 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-      <a class="nav-link" href="/client/companies">
-          <span><i class="fas fa-building"></i> &nbsp; الشركات</span>
+      <a class="nav-link" href="/employee">
+          <span><i class="fas fa-info-circle"></i> &nbsp; المعلومات</span>
       </a>
         </a>
       </li>
@@ -63,6 +63,58 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+
+       <!-- Nav Item - Utilities Collapse Menu -->
+       <li class="nav-item">
+      <a class="nav-link" href="/employee/address">
+          <span><i class="fas fa-map-marker-alt"></i> &nbsp; العنوان</span>
+      </a>
+        </a>
+      </li>
+
+           <!-- Divider -->
+           <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+      <a class="nav-link" href="/employee/spouse">
+        <span><i class="fas fa-male"></i><i class="fas fa-female"></i> &nbsp; معلومات عن الزوج(ة)</span>
+      </a>
+      </a>
+      </li>
+
+                 <!-- Divider -->
+                 <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+        <a class="nav-link" href="/employee/child">
+          <span><i class="fas fa-building"></i> &nbsp; معلومات عن الأولاد</span>
+        </a>
+        </a>
+        </li>
+
+                         <!-- Divider -->
+         <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+      <a class="nav-link" href="/employee/files">
+        <span><i class="fas fa-folder-open"></i> &nbsp; الملفّات</span>
+      </a>
+      </a>
+      </li>
+
+      <hr class="sidebar-divider d-none d-md-block">
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+<a class="nav-link" href="/employee/oldwork">
+  <span><i class="fas fa-building"></i> &nbsp; معلومات عن العمل السابق</span>
+</a>
+</a>
+</li>
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -137,13 +189,21 @@
               
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  الملف الشخصي
+                  اسم المستخدم:
+                  @auth
+                 {{Auth::user()->username}} 
+                 @endauth
                 </a>
+
+
+                <div class="dropdown-divider"></div>
+
+
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  الإعدادات
+                  الملف الشخصي
                 </a>
                 
                 <div class="dropdown-divider"></div>
@@ -190,6 +250,29 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+
+             <!-- Delete Modal-->
+             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
+            </div>
+            <br><br>
+            <p style="padding:5px;margin-top:10px;">لا يمكنك التراجع بعد هذه العملية </p>
+            <div class="modal-footer">
+              <button class="btn btn-gray" type="button" data-dismiss="modal">لا</button>
+              <a class="btn btn-danger" href="" id="modalAnchor">
+              الغاء
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -214,6 +297,14 @@
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
       </form>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+
+  <!-- my js -->
+  <script src="/js/myjs.js"></script>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="/vendor/jquery/jquery.min.js"></script>

@@ -35,6 +35,14 @@ class Employee extends Model
       return $this->hasMany(Employee_child::class);
   }
 
+  public function my_files()
+  {
+      return $this->hasMany(My_files::class);
+  }
 
+  public function oldwork()
+  {
+      return $this->hasMany(Employee_oldwork::class);
+  }
   
 }

@@ -1,6 +1,5 @@
-
-
  // this functions toggles the upload button to be disabled and enabled 
+
 
 
  //starts here ---------------------------_>
@@ -33,14 +32,12 @@ function toggleButton(InputID, ButtonID){
 
 
   $('.allUploadForms').ajaxForm({
-
   
   beforeSend: function() {
   
   var percentVal = '0%';
   maProgressBar.width(percentVal);
   maProgressBar.html(percentVal);
-  
   },
 
   uploadProgress: function(event, position, total, percentComplete) {
@@ -48,11 +45,17 @@ function toggleButton(InputID, ButtonID){
   var percentVal = percentComplete + '%';
   maProgressBar.width(percentVal)
   maProgressBar.html(percentVal);
-  
   },
 
   success: function(response){
     $("#upload_msg").text(response.msg);
+    $("#upload_msg").fadeIn('fast').delay(1000).fadeOut('fast');
+    maProgressBar.width(0)
+    maProgressBar.html('0%');
+  },
+
+  error: function(response){
+    $("#upload_msg").text(response.error);
     $("#upload_msg").fadeIn('fast').delay(1000).fadeOut('fast');
     maProgressBar.width(0)
     maProgressBar.html('0%');
@@ -316,3 +319,11 @@ function checkIfStudent(id){
     $(".isstudent").show()
   }
 }
+
+
+
+
+
+
+
+ 

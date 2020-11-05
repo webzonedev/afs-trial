@@ -29,7 +29,7 @@ class EmployeeSpouseController extends Controller
     public function index_spouse(Company $company, Employee $employee)
     {
           // Renders a list of a resource
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
         $spouses=$employee->spouse;
         return view('/client/employees.index_spouse', ['company' => $company , 'employee'=>$employee , 'spouses' => $spouses]);
@@ -43,7 +43,7 @@ class EmployeeSpouseController extends Controller
     {
          
         // Shows a single resource 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
 
             if($employee->company_id == $company->id){
                 return view('/client/employees.show_spouse', ['company' => $company , 'employee'=>$employee  ,'spouse' => $spouse]);
@@ -60,7 +60,7 @@ class EmployeeSpouseController extends Controller
     public function create_spouse(Company $company, Employee $employee)
     {
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
             if($employee->company_id == $company->id) 
                  return view('/client/employees.create_spouse', ['company' => $company , 'employee' => $employee]);
@@ -109,7 +109,7 @@ class EmployeeSpouseController extends Controller
     public function edit_spouse(Company $company, Employee $employee, Employee_spouse $spouse)
     {
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
             if($employee->company_id == $company->id) 
                  return view('/client/employees.edit_spouse', ['company' => $company , 'employee' => $employee , 'spouse' => $spouse]);

@@ -21,7 +21,9 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('/auth/login');
-});
+})->middleware('guest');
+
+
 
 
 
@@ -29,11 +31,6 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['can:access-admin']], function () {
     // Routes available to admin user only.
-
-
-
-
-
 
 
 Route::get('/admin','Admin\AdminController@index');
@@ -56,16 +53,37 @@ Route::get('/admin/companies/', 'Admin\CompaniesController@index');
 
 Route::get('/admin/companies/{company}', 'Admin\CompaniesController@show_info');
 
-Route::get('/admin/companies/{company}/mof_address', 'Admin\CompaniesController@show_mof_address');
-
-Route::get('/admin/companies/{company}/ssn_address', 'Admin\CompaniesController@show_ssn_address');
+Route::get('/admin/companies/{company}/mof_ssn_address', 'Admin\MofSsnAddressController@show_mof_ssn_address');
 
 
+Route::get('/admin/companies/{company}/lawyer', 'Admin\CompanyLawyerController@show');
 
+Route::get('/admin/companies/{company}/files', 'Admin\CompanyFilesController@index_files');
+
+Route::get('/admin/companies/{company}/employees', 'Admin\EmployeesController@index_single');
+
+Route::get('/admin/companies/{company}/files/{id}/download', 'Admin\CompanyFilesController@download_files');
+
+
+//admin_tools :
+Route::get('/admin/tools/add_company_type', 'Admin\AdminToolsController@addCompanyType');
+
+Route::post('/admin/tools/add_company_type', 'Admin\AdminToolsController@storeCompanyType');
+
+Route::get('/admin/tools/add_company_type/{type}/delete', 'Admin\AdminToolsController@deleteCompanyType');
 
 //admin_employees :
-Route::get('/admin/employee/', 'Admin\EmployeeController@index');
-Route::get('/admin/employee/show', 'Admin\EmployeeController@show_info');
+Route::get('/admin/employees', 'Admin\EmployeesController@index_all');
+Route::get('/admin/employees/{employee}', 'Admin\EmployeesController@show_info');
+Route::get('/admin/employees/{employee}/address', 'Admin\EmployeesController@show_address');
+Route::get('/admin/employees/{employee}/spouse', 'Admin\EmployeeSpouseController@index_spouse');
+Route::get('/admin/employees/{employee}/spouse/{spouse}', 'Admin\EmployeeSpouseController@show_spouse');
+Route::get('/admin/employees/{employee}/child', 'Admin\EmployeeChildController@index_child');
+Route::get('/admin/employees/{employee}/child/{child}', 'Admin\EmployeeChildController@show_child');
+Route::get('/admin/employees/{employee}/oldwork', 'Admin\EmployeeOldworkController@index_oldwork');
+Route::get('/admin/employees/{employee}/oldwork/{oldwork}', 'Admin\EmployeeOldworkController@show_oldwork');
+Route::get('/admin/employees/{employee}/files', 'Admin\EmployeeFilesController@index_files');
+Route::get('/admin/employees/{employee}/files/{id}/download', 'Admin\EmployeeFilesController@download_files');
 
 
 });
@@ -84,7 +102,6 @@ Route::group(['middleware' => ['can:access-client']], function () {
     // Routes available to client user only.
 
 Route::get('/client','Client\ClientController@index');
-
 
 //client_companies :
 
@@ -169,17 +186,6 @@ Route::get('/client/companies/{company}/employees/{employee}', 'Client\Employees
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/client/companies/{company}/employees/{employee}/edit', 'Client\EmployeesController@edit_info');
 
 Route::put('/client/companies/{company}/employees/{employee}', 'Client\EmployeesController@update_info');
@@ -238,7 +244,52 @@ Route::put('/client/companies/{company}/employees/{employee}/child/{child}', 'Cl
 
 
 
+
+Route::get('/client/companies/{company}/employees/{employee}/files/upload', 'Client\EmployeeFilesController@before_upload_files');
+
+Route::get('/client/companies/{company}/employees/{employee}/files/{id}/download', 'Client\EmployeeFilesController@download_files');
+
+Route::get('/client/companies/{company}/employees/{employee}/files/{id}/delete', 'Client\EmployeeFilesController@delete_file');
+
+Route::get('/client/companies/{company}/employees/{employee}/files/delete', 'Client\EmployeeFilesController@delete_all_files');
+
+Route::put('/client/companies/{company}/employees/{employee}/files/upload', 'Client\EmployeeFilesController@upload_files');
+
+Route::get('/client/companies/{company}/employees/{employee}/files', 'Client\EmployeeFilesController@index_files');
+
+
+
+
+
+Route::get('/client/companies/{company}/employees/{employee}/oldwork', 'Client\EmployeeOldworkController@index_oldwork');
+
+Route::get('/client/companies/{company}/employees/{employee}/oldwork/create', 'Client\EmployeeOldworkController@create_oldwork');
+
+Route::post('/client/companies/{company}/employees/{employee}/oldwork/', 'Client\EmployeeOldworkController@store_oldwork');
+
+Route::get('/client/companies/{company}/employees/{employee}/oldwork/{oldwork}', 'Client\EmployeeOldworkController@show_oldwork');
+
+Route::get('/client/companies/{company}/employees/{employee}/oldwork/{oldwork}/edit', 'Client\EmployeeOldworkController@edit_oldwork');
+
+Route::put('/client/companies/{company}/employees/{employee}/oldwork/{oldwork}', 'Client\EmployeeOldworkController@update_oldwork');
+
+
 });
+
+// . 
+// . 
+// . 
+// . 
+// . 
+// . 
+// . 
+// . 
+
+
+
+
+
+
 
 //employee :
 
@@ -247,6 +298,94 @@ Route::group(['middleware' => ['can:access-employee']], function () {
     // Routes available to client user only.
 
 Route::get('/employee','Employee\EmployeeController@show_info');
+
+
+Route::get('/employee/edit', 'Employee\EmployeeController@edit_info');
+
+Route::put('/employee', 'Employee\EmployeeController@update_info');
+
+Route::get('/employee/address', 'Employee\EmployeeController@show_address');
+
+Route::get('/employee/address/edit', 'Employee\EmployeeController@edit_address');
+
+Route::put('/employee/address', 'Employee\EmployeeController@update_address');
+
+
+Route::get('/employee/spouse', 'Employee\EmployeeSpouseController@index_spouse');
+
+
+Route::get('/employee/spouse/create', 'Employee\EmployeeSpouseController@create_spouse');
+
+
+Route::post('/employee/spouse/', 'Employee\EmployeeSpouseController@store_spouse');
+
+
+Route::get('/employee/spouse/{spouse}', 'Employee\EmployeeSpouseController@show_spouse');
+
+
+
+Route::get('/employee/spouse/{spouse}/edit', 'Employee\EmployeeSpouseController@edit_spouse');
+
+
+
+Route::put('/employee/spouse/{spouse}', 'Employee\EmployeeSpouseController@update_spouse');
+
+
+
+
+
+
+
+Route::get('/employee/child', 'Employee\EmployeeChildController@index_child');
+
+
+Route::get('/employee/child/create', 'Employee\EmployeeChildController@create_child');
+
+
+Route::post('/employee/child', 'Employee\EmployeeChildController@store_child');
+
+
+Route::get('/employee/child/{child}', 'Employee\EmployeeChildController@show_child');
+
+
+
+Route::get('/employee/child/{child}/edit', 'Employee\EmployeeChildController@edit_child');
+
+
+
+Route::put('/employee/child/{child}', 'Employee\EmployeeChildController@update_child');
+
+
+
+
+
+Route::get('/employee/files/upload', 'Employee\EmployeeFilesController@before_upload_files');
+
+Route::get('/employee/files/{id}/download', 'Employee\EmployeeFilesController@download_files');
+
+Route::get('/employee/files/{id}/delete', 'Employee\EmployeeFilesController@delete_file');
+
+Route::get('/employee/files/delete', 'Employee\EmployeeFilesController@delete_all_files');
+
+Route::put('/employee/files/upload', 'Employee\EmployeeFilesController@upload_files');
+
+Route::get('/employee/files', 'Employee\EmployeeFilesController@index_files');
+
+
+
+
+
+Route::get('/employee/oldwork', 'Employee\EmployeeOldworkController@index_oldwork');
+
+Route::get('/employee/oldwork/create', 'Employee\EmployeeOldworkController@create_oldwork');
+
+Route::post('/employee/oldwork/', 'Employee\EmployeeOldworkController@store_oldwork');
+
+Route::get('/employee/oldwork/{oldwork}', 'Employee\EmployeeOldworkController@show_oldwork');
+
+Route::get('/employee/oldwork/{oldwork}/edit', 'Employee\EmployeeOldworkController@edit_oldwork');
+
+Route::put('/employee/oldwork/{oldwork}', 'Employee\EmployeeOldworkController@update_oldwork');
 
 
 

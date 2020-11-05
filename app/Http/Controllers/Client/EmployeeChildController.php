@@ -30,7 +30,7 @@ class EmployeeChildController extends Controller
     public function index_child(Company $company, Employee $employee)
     {
           // Renders a list of a resource
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
         $children=$employee->child;
         return view('/client/employees.index_child', ['company' => $company , 'employee'=>$employee , 'children' => $children]);
@@ -44,7 +44,7 @@ class EmployeeChildController extends Controller
     {
          
         // Shows a single resource 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
 
             if($employee->company_id == $company->id){
                 return view('/client/employees.show_child', ['company' => $company , 'employee'=>$employee  ,'child' => $child]);
@@ -61,7 +61,7 @@ class EmployeeChildController extends Controller
     public function create_child(Company $company, Employee $employee)
     {
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
             if($employee->company_id == $company->id) 
                  return view('/client/employees.create_child', ['company' => $company , 'employee' => $employee]);
@@ -110,7 +110,7 @@ class EmployeeChildController extends Controller
     public function edit_child(Company $company, Employee $employee, Employee_child $child)
     {
 
-        if($company->client_id == Auth::user()->profile_id) {
+        if($company->client_id == Auth::user()->profile_id && $employee->company_id==$company->id) {
             
             if($employee->company_id == $company->id) 
                  return view('/client/employees.edit_child', ['company' => $company , 'employee' => $employee , 'child' => $child]);

@@ -2,107 +2,13 @@
 
 @section ('client_home_content')
 
-<br><br>
+
+
 <!-- Begin Page Content -->
 
 <div class="container-fluid">
 
-<!-- Content Row -->
-<div class="row">
-
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-2 col-md-6 mb-4">
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}" class="myCardLink ">معلومات الشركة</a> <i class="text-danger fas fa-info-circle"></i> </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-4 col-md-6 mb-4">
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/mof_ssn_address" class="myCardLink "> العنوان لدى وزارة المالية و الضمان الاجتماعي</a> <i class="text-danger fas fa-address-card"></i> </div>
-            
-          </div>
-         
-        </div>
-      </div>
-    </div>
-  </div>
-
-         <!-- Earnings (Monthly) Card Example -->
-         <div class="col-xl-2 col-md-6 mb-4 " >
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center smallcardSize">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/lawyer/" class="myCardLink">محامي الشّركة</a> <i class="text-danger fas fa-gavel"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-            
-              
-            </div> -->
-           
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-2 col-md-6 mb-4 " >
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center smallcardSize">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="/client/companies/{{$company->id}}/files" class="myCardLink">ملفّات الشّركة</a> <i class="text-danger fas fa-upload"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-            
-              
-            </div> -->
-           
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-2 col-md-6 mb-4 " >
-    <div class="card border-left-danger shadow h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center smallcardSize">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-            <a href="" class="myCardLink cardlink-active">موظفين الشركة</a> <i class="text-danger fas fa-user-tie"></i> </div>
-            <!-- <div class="row no-gutters align-items-center">
-              
-            </div> -->
-           
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+@include('client.companies.header' , ['activeclass' => 'employees'])
 
 <br><br>
 
@@ -148,7 +54,7 @@
                       <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
                       <td><a href="/client/companies/{{$company->id}}/employees/{{$employee->id}}"> {{$employee->user->firstname}} </a></td>
                       <td>{{$employee->user->email}}</td>
-                      <td>{{$employee->user->firstname}}</td>
+                      <td>{{$employee->address->e_phone}} | {{$employee->address->e_other_phone}}</td>
                       <td>{{$employee->company->c_name}}</td>
                       <td><a href="/client/companies/{{$company->id}}/employees/{{$employee->id}}/edit"><i class="fas fa-edit text-danger"></i></a></td>
                       <td><a><i class="fas fa-trash text-danger"></i></a></td>

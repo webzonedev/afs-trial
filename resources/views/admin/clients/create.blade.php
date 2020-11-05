@@ -2,8 +2,18 @@
 
 @section ('admin_home_content')
 
+<br><br>
+<!-- Begin Page Content -->
 
-<div class="card-body">
+<div class="container-fluid">
+
+
+
+
+<!-- Content Row -->
+    <div class="row">
+         <div class="col-lg-12 mb-4">
+            <div class="card-body">
                     <form method="POST" action="/admin/clients">
                         @csrf
 
@@ -89,13 +99,16 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-danger">
-                                    {{ __('تسجيل') }}
+                                {{ __('إنشاء العميل') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
 
+            </div>
+    </div>  
 
 
-                @endsection
+<br><br>
+@endsection

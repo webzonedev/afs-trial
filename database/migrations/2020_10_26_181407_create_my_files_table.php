@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyFilesTable extends Migration
+class CreateMyFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateCompanyFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_files', function (Blueprint $table) {
+        Schema::create('my_files', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('company_id')
+            ->nullable()
+            ->constrained()
+            ->onDelete('cascade');
+
+            $table->foreignId('employee_id')
             ->nullable()
             ->constrained()
             ->onDelete('cascade');
@@ -36,6 +41,6 @@ class CreateCompanyFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_files');
+        Schema::dropIfExists('my_files');
     }
 }
