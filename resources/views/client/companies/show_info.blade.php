@@ -492,9 +492,29 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-danger">كلمة المرور</h6>
             </div>
-            <div class="card-body">
-            <p>{{$company->mof_pass}}</p>
+
+
+            <div class="card-body" style="display:flex" id="mofPassHided">
+            <p>
+            @php 
+             for($i=0; $i < strlen($company->mof_pass) ; $i++) {
+              echo "•";
+             }
+            @endphp
+            </p>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a id="showPassAnchor"> <i class="fas fa-eye"></i></a>
             </div>
+
+            <div class="card-body" style="display:none" id="showMofPass">
+            <p>
+            {{$company->mof_pass}}
+            </p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a id="hidePassAnchor"> <i class="fas fa-eye-slash"></i></a>
+            </div>
+
+
           </div>
 
   </div>

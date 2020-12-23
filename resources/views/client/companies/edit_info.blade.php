@@ -491,9 +491,12 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-danger">كلمة المرور</h6>
             </div>
-            <div class="card-body">
-            <input type="text" class="form-control form-control-user " id="mof_pass" name="mof_pass"  
-                      value="{{ $company->mof_pass }}" >
+            <div class="card-body" style="display:flex">
+            <input type="password" class="form-control form-control-user " id="mof_pass" name="mof_pass"  
+                      value="{{ $company->mof_pass }} "  >
+            
+         
+                      
             </div>
           </div>
 

@@ -39,8 +39,56 @@
             <h6 class="m-0 font-weight-bold text-danger">المحافظة</h6>
           </div>
           <div class="card-body">
-          <input type="text" class="form-control form-control-user" id="e_governorate" name="e_governorate" 
-                      value="{{$employee_address->e_governorate}}" >
+                      <select class=" form-control form-control-user " id="e_governorate" name="e_governorate" 
+            onclick="selectGovernorate(this.id,'e_district');selectDistrict('e_district','e_rea');" >
+
+    
+            <option value="لا شيء" >
+              لا شيء
+            </option>
+
+
+            <option value="بيروت"  {{ $employee_address != null && $employee_address->e_governorate == 'بيروت' ? 'selected' : '' }}>
+              بيروت
+
+            </option>
+            <option value="جبل لبنان" >
+              جبل لبنان
+
+            </option>
+
+            <option value="الشّمال" {{ $employee_address != null && $employee_address->e_governorate == 'الشّمال' ? 'selected' : '' }}>
+                الشمال
+
+            </option>
+            
+            <option value="الجنوب"  {{ $employee_address != null && $employee_address->e_governorate == 'الجنوب' ? 'selected' : '' }}>
+                الجنوب
+
+            </option>
+
+            <option value="البقاع" {{ $employee_address != null && $employee_address->e_governorate == 'البقاع' ? 'selected' : '' }}>
+            البقاع
+
+            </option>
+
+            <option value="النّبطيّة" {{ $employee_address != null && $employee_address->e_governorate == 'النّبطيّة' ? 'selected' : '' }}>
+            النّبطيّة 
+
+            </option>
+
+            <option value="عكّار" {{ $employee_address != null && $employee_address->e_governorate == 'عكّار' ? 'selected' : '' }}>
+             عكّار  
+
+            </option>
+
+            <option value="بعلبك الهرمل" {{ $employee_address != null && $employee_address->e_governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
+                بعلبك الهرمل
+
+            </option>
+            
+            
+            </select>
           </div>
         </div>
 
@@ -53,8 +101,16 @@
             <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
           </div>
           <div class="card-body">
-          <input type="text" class="form-control form-control-user" id="e_district" name="e_district" 
-                      value="{{$employee_address->e_district}}" >
+
+                      <select class="district form-control form-control-user " id="e_district" name="e_district" {{$employee_address->e_district == null ? 'disabled' : '' }}
+            onchange="selectDistrict(this.id,'e_rea');">
+
+            <option value="{{$employee_address->e_district == null ? 'لا شيء' : $employee_address->e_district}}" selected>
+            {{$employee_address->e_district == null ? 'لا شيء' : $employee_address->e_district}}</option>
+
+            
+            
+            </select>
           </div>
         </div>
 
@@ -67,8 +123,15 @@
             <h6 class="m-0 font-weight-bold text-danger">المنطقة</h6>
           </div>
           <div class="card-body">
-          <input type="text" class="form-control form-control-user" id="e_rea" name="e_rea" 
-                      value="{{$employee_address->e_rea}}" >
+
+        <select class="real_estate_area form-control form-control-user" id="e_rea" name="e_rea" {{$employee_address->e_rea == null ? 'disabled' : '' }} > 
+
+        <option value="{{$employee_address->e_rea == null ? 'لا شيء' : $employee_address->e_rea}}" selected>
+        {{$employee_address->e_rea == null ? 'لا شيء' : $employee_address->e_rea}}
+        </option>
+
+        </select>
+
           </div>
         </div>
 

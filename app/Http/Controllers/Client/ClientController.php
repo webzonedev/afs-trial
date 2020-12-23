@@ -49,4 +49,43 @@ class ClientController extends Controller
     
 }
 
+        public function show() {
+
+   // Shows a single resource 
+            $client = Auth::user();
+
+            return view('/client/profile.show', ['client' => $client]);
+
+
+        }
+
+        public function edit() {
+
+            $client = Auth::user();
+
+            return view('/client/profile.edit', ['client' => $client]);
+
+         
+         
+        }
+
+        public function update() {
+
+            
+            $client = User::where('profile_id',Auth::user()->id)->first();
+
+            
+            $client->update([
+                'firstname' => request('firstname'),
+                'lastname' => request('lastname'),
+                'username' => request('username'),
+                'email' => request('email'),
+           ]); 
+
+               return redirect('/client/profile/');
+                
+
+        
+             }
+
 }

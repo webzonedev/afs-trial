@@ -10328,3 +10328,8 @@ body.sidebar-toggled footer.sticky-footer {
   color:white;
   opacity: 0.8;
 }
+
+
+.mofPass{
+  -webkit-text-security: circle;
+}

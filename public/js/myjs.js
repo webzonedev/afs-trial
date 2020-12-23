@@ -321,6 +321,27 @@ function checkIfStudent(id){
 }
 
 
+$("#showPassAnchor").on('click' , function(event) {
+
+  event.preventDefault;
+
+  $("#mofPassHided").toggle();
+
+  $("#showMofPass").css('display','flex');
+  
+
+});
+
+$("#hidePassAnchor").on('click' , function(event) {
+
+  event.preventDefault;
+
+  $("#showMofPass").toggle();
+  
+  $("#mofPassHided").toggle();
+
+
+});
 
 
 

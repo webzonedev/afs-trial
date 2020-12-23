@@ -103,6 +103,10 @@ Route::group(['middleware' => ['can:access-client']], function () {
 
 Route::get('/client','Client\ClientController@index');
 
+Route::get('/client/profile','Client\ClientController@show');
+
+Route::get('/client/profile/edit','Client\ClientController@edit');
+
 //client_companies :
 
 

@@ -68,7 +68,7 @@
 @csrf
 
       <input type="text" class="form-control form-control-user " id="type" name="type" 
-              placeholder="أضف نوع جديد ...">
+              placeholder="أضف نوع جديد ..." required>
            
       <button type="submit" class="btn btn-danger btn-user"> <i class="fas fa-plus-square"></i></button>
 

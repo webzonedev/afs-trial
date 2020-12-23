@@ -133,7 +133,7 @@
             <div class="card-body">
              
                       <input type="text" class="form-control form-control-user " id="lawyer_address" name="lawyer_address" 
-                      value="{{ $lawyer != null ? $lawyer->lawyer_address : ''  }}" placeholder=" الفاكس ...">
+                      value="{{ $lawyer != null ? $lawyer->lawyer_address : ''  }}" placeholder=" العنوان ...">
                     
                      
 
