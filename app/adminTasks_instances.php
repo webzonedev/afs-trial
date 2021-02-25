@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class adminTasks_instances extends Model
 {
-    use HasFactory;
 
     public $timestamps = false;
 
