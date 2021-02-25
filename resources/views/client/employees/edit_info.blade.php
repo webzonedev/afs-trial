@@ -273,60 +273,12 @@
             </div>
             <div class="card-body" >
             
-            <select class="form-control form-control-user" id="e_id_governorate" name="e_id_governorate"
-            onclick="selectGovernorate(this.id,'e_id_district');selectDistrict('e_id_district','e_id_rea');" >
-            
+            <select class=" form-control form-control-user " id="governorate1" name="e_id_governorate">
+              <option value="">اختر المحافظة</option>
+              <option value="{{$employee->e_id_governorate}}" selected>{{$employee->e_id_governorate}}</option>
 
-            <option value="لا شيء" >
-              لا شيء
-            </option>
-
-
-            <option value="بيروت"  {{ $employee->e_id_governorate == 'بيروت' ? 'selected' : '' }}>
-              بيروت
-
-            </option>
-            <option value="جبل لبنان" >
-              جبل لبنان
-
-            </option>
-
-            <option value="الشّمال" {{ $employee->e_id_governorate == 'الشّمال' ? 'selected' : '' }}>
-                الشمال
-
-            </option>
-            
-            <option value="الجنوب"  {{ $employee->e_id_governorate == 'الجنوب' ? 'selected' : '' }}>
-                الجنوب
-
-            </option>
-
-            <option value="البقاع" {{ $employee->e_id_governorate == 'البقاع' ? 'selected' : '' }}>
-            البقاع
-
-            </option>
-
-            <option value="النّبطيّة" {{ $employee->e_id_governorate == 'النّبطيّة' ? 'selected' : '' }}>
-            النّبطيّة 
-
-            </option>
-
-            <option value="عكّار" {{  $employee->e_id_governorate == 'عكّار' ? 'selected' : '' }}>
-             عكّار  
-
-            </option>
-
-            <option value="بعلبك الهرمل" {{ $employee->e_id_governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
-                بعلبك الهرمل
-
-            </option>
-            
             </select>
 
-        
-
-
-            
 
                      
             </div>
@@ -342,15 +294,15 @@
               <h6 class="m-0 font-weight-bold text-danger">محل الإقامة حسب الهويّة (القضاء)</h6>
             </div>
             <div class="card-body">
-   
-  <select class="district form-control form-control-user " id="e_id_district" name="e_id_district" {{ $employee->e_id_district == null ? 'disabled' : '' }}
-            onchange="selectDistrict(this.id,'e_id_rea');">
+  
 
-            <option value="{{ $employee->e_id_district != null ? $employee->e_id_district : 'لا شيء' }}" selected>{{ $employee->e_id_district != null ? $employee->e_id_district : 'لا شيء' }}</option>
+            <select class=" form-control form-control-user " id="district1" name="e_id_district">
+              <option value="">اختر المحافظة</option>
+              <option value="{{$employee->e_id_district}}" selected>{{$employee->e_id_district}}</option>
 
-            
-            
             </select>
+
+            
             </div>
           </div>
 
@@ -365,13 +317,12 @@
               <h6 class="m-0 font-weight-bold text-danger">محل الإقامة حسب الهويّة (المنطقة)</h6>
             </div>
             <div class="card-body">
-            <select class="real_estate_area form-control form-control-user" id="e_id_rea" name="e_id_rea" {{ $employee->e_id_rea == null ? 'disabled' : '' }} > 
 
-<option value="{{ $employee->e_id_rea != null ? $employee->e_id_rea : 'لا شيء' }}" selected>{{ $employee->e_id_rea != null ? $employee->e_id_rea : 'لا شيء'  }}</option>
+            <select class=" form-control form-control-user " id="real_estate_area1" name="e_id_rea">
+              <option value="">اختر المحافظة</option>
+              <option value="{{$employee->e_id_rea}}" selected>{{$employee->e_id_rea}}</option>
 
-
-
-</select>
+            </select>
             </div>
           </div>
 

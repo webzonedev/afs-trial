@@ -35,6 +35,8 @@ Route::group(['middleware' => ['can:access-admin']], function () {
 
 Route::get('/admin','Admin\AdminController@index');
 
+Route::get('notifications','Admin\UserNotificationsController@show');
+
 //admin_clients :
 
 Route::get('/admin/clients', 'Admin\ClientsController@index');
@@ -43,8 +45,11 @@ Route::get('/admin/clients/create', 'Admin\ClientsController@create');
 
 Route::post('/admin/clients/', 'Admin\ClientsController@store');
 
+Route::get('admin/clients/{client}/profile','Admin\ClientsController@show_profile');
 
-// Route::get('/admin/client/1', 'Admin\EmployeeController@show_info');
+Route::get('admin/clients/{client}/profile/deactivate','Admin\ClientsController@deactivate_client');
+
+
 
 
 //admin_companies :
@@ -86,6 +91,17 @@ Route::get('/admin/employees/{employee}/files', 'Admin\EmployeeFilesController@i
 Route::get('/admin/employees/{employee}/files/{id}/download', 'Admin\EmployeeFilesController@download_files');
 
 
+//admin_tasks :
+Route::get('/admin/tasks', 'Admin\AdminTasksController@index');
+Route::post('/admin/tasks/create', 'Admin\AdminTasksController@store_task');
+
+
+//admin_tasks_instance :
+Route::get('/admin/tasks/{task}', 'Admin\AdminTasksInstancesController@show');
+Route::post('/admin/tasks/{task}/create', 'Admin\AdminTasksInstancesController@store_instance');
+Route::put('/admin/tasks/{task}/{instance}/end', 'Admin\AdminTasksInstancesController@end_instance');
+
+
 });
 
 
@@ -99,13 +115,17 @@ Route::get('/admin/employees/{employee}/files/{id}/download', 'Admin\EmployeeFil
 
 
 Route::group(['middleware' => ['can:access-client']], function () {
+    
     // Routes available to client user only.
+
 
 Route::get('/client','Client\ClientController@index');
 
 Route::get('/client/profile','Client\ClientController@show');
 
 Route::get('/client/profile/edit','Client\ClientController@edit');
+
+Route::put('/client/profile','Client\ClientController@update');
 
 //client_companies :
 
@@ -303,6 +323,11 @@ Route::group(['middleware' => ['can:access-employee']], function () {
 
 Route::get('/employee','Employee\EmployeeController@show_info');
 
+Route::get('/employee/profile','Employee\EmployeeController@show_profile');
+
+Route::get('/employee/profile/edit','Employee\EmployeeController@edit_profile');
+
+Route::put('/employee/profile','Employee\EmployeeController@update_profile');
 
 Route::get('/employee/edit', 'Employee\EmployeeController@edit_info');
 

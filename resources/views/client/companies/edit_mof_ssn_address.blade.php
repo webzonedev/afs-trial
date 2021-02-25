@@ -36,54 +36,13 @@
               </h6>
             </div>
             <div class="card-body">
-            <select class="form-control form-control-user" id="governorate1" name="governorate1"
-            onclick="selectGovernorate(this.id,'district1');selectDistrict('district1','real_estate_area1');" >
-            
-
-            <option value="لا شيء" >
-              لا شيء
-            </option>
-
-
-            <option value="بيروت"  {{ $mof_address != null && $mof_address->governorate == 'بيروت' ? 'selected' : '' }}>
-              بيروت
-
-            </option>
-            <option value="جبل لبنان" >
-              جبل لبنان
-
-            </option>
-
-            <option value="الشّمال" {{ $mof_address != null && $mof_address->governorate == 'الشّمال' ? 'selected' : '' }}>
-                الشمال
-
-            </option>
-            
-            <option value="الجنوب"  {{ $mof_address != null && $mof_address->governorate == 'الجنوب' ? 'selected' : '' }}>
-                الجنوب
-
-            </option>
-
-            <option value="البقاع" {{ $mof_address != null && $mof_address->governorate == 'البقاع' ? 'selected' : '' }}>
-            البقاع
-
-            </option>
-
-            <option value="النّبطيّة" {{ $mof_address != null && $mof_address->governorate == 'النّبطيّة' ? 'selected' : '' }}>
-            النّبطيّة 
-
-            </option>
-
-            <option value="عكّار" {{ $mof_address != null && $mof_address->governorate == 'عكّار' ? 'selected' : '' }}>
-             عكّار  
-
-            </option>
-
-            <option value="بعلبك الهرمل" {{ $mof_address != null && $mof_address->governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
-                بعلبك الهرمل
-
-            </option>
-            
+           
+            <select class=" form-control form-control-user " id="governorate1" name="governorate1">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $mof_address->governorate : '' }}" selected="selected">
+              {{ $mof_address != null ? $mof_address->governorate : '' }}
+              </option>
+              
             </select>
                      
             </div>
@@ -98,13 +57,12 @@
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class="district form-control form-control-user " id="district1" name="district1" {{ $mof_address == null ? 'disabled' : '' }}
-            onchange="selectDistrict(this.id,'real_estate_area1');">
-
-            <option value="{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}" selected>{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}</option>
-
-            
-            
+            <select class=" form-control form-control-user " id="district1" name="district1">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $mof_address->district : '' }}" selected="selected">
+              {{ $mof_address != null ? $mof_address->district : '' }}
+              </option>
+              
             </select>
 
 
@@ -149,12 +107,12 @@
               <h6 class="m-0 font-weight-bold text-danger">المنطقة العقاريّّة</h6>
             </div>
             <div class="card-body">
-            <select class="real_estate_area form-control form-control-user" id="real_estate_area1" name="real_estate_area1" {{ $mof_address == null ? 'disabled' : '' }} > 
-
-            <option value="{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء' }}" selected>{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء' }}</option>
-
-
-
+            <select class=" form-control form-control-user " id="real_estate_area1" name="real_estate_area1">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $mof_address->real_estate_area : '' }}" selected="selected">
+              {{ $mof_address != null ? $mof_address->real_estate_area : '' }}
+              </option>
+              
             </select>
             </div>
           </div>
@@ -354,53 +312,13 @@
               </h6>
             </div>
             <div class="card-body">
-            <select class="form-control form-control-user " id="governorate2" name="governorate2" 
-                     onclick="selectGovernorate(this.id,'dsitrict2');selectDistrict('district2','real_estate_area2');" >
-
-                    @if ($mof_address==null){
-                      <option value="لا شيء">لا شيء</option>
-                    }
-                    @endif
-
-                      <option value="بيروت"  {{ $mof_address != null && $mof_address->governorate == 'بيروت' ? 'selected' : '' }}>
-              بيروت
-
-            </option>
-            <option value="جبل لبنان" >
-              جبل لبنان
-
-            </option>
-
-            <option value="الشّمال" {{ $mof_address != null && $mof_address->governorate == 'الشّمال' ? 'selected' : '' }}>
-                الشمال
-
-            </option>
-            
-            <option value="الجنوب"  {{ $mof_address != null && $mof_address->governorate == 'الجنوب' ? 'selected' : '' }}>
-                الجنوب
-
-            </option>
-
-            <option value="البقاع" {{ $mof_address != null && $mof_address->governorate == 'البقاع' ? 'selected' : '' }}>
-            البقاع
-
-            </option>
-
-            <option value="النّبطيّة" {{ $mof_address != null && $mof_address->governorate == 'النّبطيّة' ? 'selected' : '' }}>
-            النّبطيّة 
-
-            </option>
-
-            <option value="عكّار" {{ $mof_address != null && $mof_address->governorate == 'عكّار' ? 'selected' : '' }}>
-             عكّار  
-
-            </option>
-
-            <option value="بعلبك الهرمل" {{ $mof_address != null && $mof_address->governorate == 'بعلبك الهرمل' ? 'selected' : '' }}>
-                بعلبك الهرمل
-
-            </option>
-            
+           
+            <select class=" form-control form-control-user " id="governorate2" name="governorate2">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $ssn_address->governorate : '' }}" selected="selected">
+              {{ $mof_address != null ? $ssn_address->governorate : '' }}
+              </option>
+              
             </select>
                      
             </div>
@@ -415,10 +333,12 @@
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class="district form-control form-control-user" id="district2" name="district2"
-            onchange="selectDistrict(this.id,'real_estate_area2');" {{ $mof_address == null ? 'disabled' : '' }} >
-                      <option value="{{ $mof_address != null ? $mof_address->district : 'لا شيء'  }}" selecteds>{{ $mof_address != null ? $mof_address->district : 'لا شيء' }}</option>
-            
+            <select class=" form-control form-control-user " id="district2" name="district2">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $ssn_address->district : '' }}" selected="selected">
+              {{ $mof_address != null ? $ssn_address->district : '' }}
+              </option>
+              
             </select>
 
 
@@ -468,13 +388,12 @@
               <h6 class="m-0 font-weight-bold text-danger">المنطقة العقاريّّة</h6>
             </div>
             <div class="card-body">
-            <select class="real_estate_area form-control form-control-user" id="real_estate_area2" name="real_estate_area2"
-            {{ $mof_address == null ? 'disabled' : '' }}>
-
-            <option value="{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء'  }}" selected>{{ $mof_address != null ? $mof_address->real_estate_area : 'لا شيء'}}</option>
-
-
-
+            <select class=" form-control form-control-user " id="real_estate_area2" name="real_estate_area2">
+              <option value="">اختر المحافظة</option>
+              <option value="{{ $mof_address != null ? $ssn_address->real_estate_area : '' }}" selected="selected">
+              {{ $mof_address != null ? $ssn_address->real_estate_area : '' }}
+              </option>
+              
             </select>
             </div>
           </div>

@@ -173,7 +173,7 @@
                 <div class="dropdown-divider"></div>
 
 
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/employee/profile">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   الملف الشخصي
                 </a>

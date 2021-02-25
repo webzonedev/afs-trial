@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Client;
 
+use ILluminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Client;
+use App\User;
 use App\Company;
 use App\Employee;
-use Illuminate\Support\Facades\Auth;
+use App\Notifications\UpdateIsMade;
 
 class ClientController extends Controller
 {
@@ -72,20 +75,30 @@ class ClientController extends Controller
         public function update() {
 
             
-            $client = User::where('profile_id',Auth::user()->id)->first();
+            $client = Client::where('id',Auth::user()->profile_id)->first();
 
+            $original_arr = $client->user->getOriginal();
             
-            $client->update([
+            $client->user->update([
                 'firstname' => request('firstname'),
                 'lastname' => request('lastname'),
                 'username' => request('username'),
                 'email' => request('email'),
            ]); 
+           if($client->user->wasChanged()){
+            // update performed an update
 
+            $arr_of_changes = $client->user->getChanges();
+
+            $admin=User::where('profile_type' , 'App\Admin')->first(); 
+            $admin->notify(new UpdateIsMade($arr_of_changes,$original_arr));
+
+            }
+            
                return redirect('/client/profile/');
-                
 
-        
+
+                
              }
 
 }

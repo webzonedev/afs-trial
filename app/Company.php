@@ -47,5 +47,11 @@ class Company extends Model
     }
 
 
+    public function admin_tasks()
+    {
+        return $this->hasMany(adminTasks::class);
+    }
+
+
     
 }

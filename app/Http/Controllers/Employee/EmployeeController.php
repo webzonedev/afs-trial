@@ -23,6 +23,43 @@ class EmployeeController extends Controller
         $this->middleware('auth');
     }
 
+    public function show_profile() {
+
+        // Shows a single resource 
+        $employee = Auth::user();
+     
+        return view('/employee/profile.show', ['employee' => $employee]);
+     
+     
+    }
+     
+    public function edit_profile() {
+     
+        $employee = Auth::user();
+     
+        return view('/employee/profile.edit', ['employee' => $employee]);
+     
+              
+              
+        }
+     
+    public function update_profile() {
+     
+                 
+        $employee = Employee::where('id',Auth::user()->profile_id)->first();
+     
+                 
+        $employee->user->update([
+            'firstname' => request('firstname'),
+            'lastname' => request('lastname'),
+            'username' => request('username'),
+            'email' => request('email'),
+        ]); 
+     
+        return redirect('/employee/profile/');
+                     
+        }
+
 
     public function show_info(){
         
@@ -167,6 +204,10 @@ class EmployeeController extends Controller
 
 
     }
+
+
+
+
 
 
 

@@ -13,5 +13,6 @@ class Admin extends Model
       return $this->morphOne('App\User', 'profile');
     }
 
+
     
 }

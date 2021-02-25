@@ -37,53 +37,10 @@
               </h6>
             </div>
             <div class="card-body">
-            <select class=" form-control form-control-user " id="governorate1" name="governorate1" 
-            onclick="selectGovernorate(this.id,'district1');selectDistrict('district1','real_estate_area1');" >
+           
 
-            <option value="لا شيء" >
-             لا شيء
-
-            </option>
-
-            <option value="بيروت" >
-              بيروت
-
-            </option>
-            <option value="جبل لبنان" >
-              جبل لبنان
-
-            </option>
-
-            <option value="الشّمال" >
-                الشمال
-
-            </option>
-            
-            <option value="الجنوب" >
-                الجنوب
-
-            </option>
-
-            <option value="البقاع" >
-            البقاع
-
-            </option>
-
-            <option value="النّبطيّة" >
-            النّبطيّة 
-
-            </option>
-
-            <option value="عكّار" >
-             عكّار  
-
-            </option>
-
-            <option value="بعلبك الهرمل" >
-                بعلبك الهرمل
-
-            </option>
-            
+            <select class=" form-control form-control-user " id="governorate1" name="governorate1">
+              <option value="" selected="selected">اختر المحافظة</option>
             </select>
                      
             </div>
@@ -98,15 +55,14 @@
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class=" district form-control form-control-user" id="district1" name="district1" 
-            onchange="selectDistrict(this.id,'real_estate_area1');" disabled>
+           
+ 
 
-            <option value="لا شيء" selected>
-              لا شيء
-
-            </option>
-            
+            <select  class=" district form-control form-control-user" id="district1" name="district1">
+              <option value="" selected="selected">اختر القضاء</option>
             </select>
+
+            
 
 
 
@@ -151,14 +107,10 @@
             </div>
             <div class="card-body">
 
-            <select class="real_estate_area form-control form-control-user" id="real_estate_area1" name="real_estate_area1" 
-            disabled>
-            <option value="لا شيء" selected>
-              لا شيء 
+           
 
-            </option>
-            
-          
+            <select class="real_estate_area form-control form-control-user" id="real_estate_area1" name="real_estate_area1" >
+              <option value="" selected="selected">اختر المنطقة العقارية</option>
             </select>
 
             </div>
@@ -359,56 +311,13 @@
               </h6>
             </div>
             <div class="card-body">
-            <select class=" form-control form-control-user " id="governorate2" name="governorate2" 
-            onclick="selectGovernorate(this.id,'district2');selectDistrict('district2','real_estate_area2');"  >
-
-            <option value="لا شيء" selected>
-            لا شيء
-
-            </option>
-            
-
-          <option value="بيروت" >
-              بيروت
-
-            </option>
-            <option value="جبل لبنان" >
-              جبل لبنان
-
-            </option>
-
-            <option value="الشّمال" >
-                الشمال
-
-            </option>
-            
-            <option value="الجنوب" >
-                الجنوب
-
-            </option>
-
-            <option value="البقاع" >
-            البقاع
-
-            </option>
-
-            <option value="النّبطيّة" >
-            النّبطيّة 
-
-            </option>
-
-            <option value="عكّار" >
-             عكّار  
-
-            </option>
-
-            <option value="بعلبك الهرمل" >
-                بعلبك الهرمل
-
-            </option>
-            
+           
+            <select class=" form-control form-control-user " id="governorate2" name="governorate2">
+              <option value="" selected="selected">اختر المحافظة</option>
             </select>
                      
+
+
             </div>
           </div>
 
@@ -421,14 +330,10 @@
               <h6 class="m-0 font-weight-bold text-danger">القضاء</h6>
             </div>
             <div class="card-body">
-            <select class="district form-control form-control-user" id="district2" name="district2" 
-                      onchange="selectDistrict(this.id,'real_estate_area2');" disabled >
-                      <option value="لا شيء" selected>
-              لا شيء 
-
-            </option>
-            
+            <select  class=" district form-control form-control-user" id="district2" name="district2">
+              <option value="" selected="selected">اختر القضاء</option>
             </select>
+          
 
 
 
@@ -477,16 +382,13 @@
               <h6 class="m-0 font-weight-bold text-danger">المنطقة العقاريّّة</h6>
             </div>
             <div class="card-body">
-            <select class="real_estate_area form-control form-control-user" id="real_estate_area2" name="real_estate_area2" disabled>
-
-            <option value="لا شيء" selected>
-            لا شيء
-
-            </option>
-            
-            
-          
+            <select class="real_estate_area form-control form-control-user" id="real_estate_area2" name="real_estate_area2">
+              <option value="" selected="selected">اختر المنطقة العقارية</option>
             </select>
+
+          
+
+
             </div>
           </div>
 

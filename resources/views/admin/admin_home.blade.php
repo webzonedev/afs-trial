@@ -27,7 +27,12 @@
           </div>
           <div class="col-auto">
           <div class="fas fa-user-tie mb-0 text-danger my-text-2"></div>
-          <div class="h5 mb-0 font-weight-bold text-danger my-text-1">@php echo \App\Client::all()->count() @endphp</div>
+          <div class="h5 mb-0 font-weight-bold text-danger my-text-1">
+          @php 
+          echo \App\User::where('profile_type','App\Client')->where('is_deleted',0)->where('is_deactivated',0)->get()->count();
+          
+          @endphp
+          </div>
           </div>
         </div>
       </div>
@@ -116,9 +121,10 @@
                   <tbody>
                     
                     @foreach ($clients as $client)
+                    @if($client->is_deactivated == 0 && $client->is_deleted == 0)
                     <tr>
                       <td><a> <i class="fas fa-user-circle" style="font-size:2rem"></i> </a></td>
-                      <td><a href=""> {{$client->user->firstname}}  {{$client->user->lastname}} </a></td>
+                      <td><a href="/admin/clients/{{$client->id}}/profile"> {{$client->user->firstname}}  {{$client->user->lastname}} </a></td>
                       <td>{{$client->user->username}}</td>
                       <td>{{$client->user->email}}</td>
                       <td>
@@ -132,12 +138,13 @@
                           
 
                           @php $i++; @endphp
+                        
                         @endforeach
 
                       </td>
                      
                     </tr>
-                  
+                      @endif
                       @endforeach
 
 

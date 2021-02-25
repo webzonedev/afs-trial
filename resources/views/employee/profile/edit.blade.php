@@ -1,6 +1,6 @@
-@extends ('client/layout')
+@extends ('employee/layout')
 
-@section ('client_home_content')
+@section ('employee_home_content')
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -25,7 +25,7 @@
 </div>
 
 <div class="row">
-<h3 style="margin-right: 60px;text-align:center;margin:auto"> {{$client->username}}</h3>
+<h3 style="margin-right: 60px;text-align:center;margin:auto"> {{$employee->username}}</h3>
 </div>
     
 
@@ -46,13 +46,13 @@
             </div>
             <div class="card-body">
              
-            <form method="POST" action="/client/profile">
+            <form method="POST" action="/employee/profile">
             @csrf
             @method('PUT')
 
 
             <input type="text" class="form-control form-control-user " id="firstname" name="firstname" 
-                      value="{{$client->firstname }}" >
+                      value="{{$employee->firstname }}" >
                     
                      
 
@@ -77,7 +77,7 @@
 
                 
             <input type="text" class="form-control form-control-user " id="lastname" name="lastname" 
-                      value="{{$client->lastname }}" >
+                      value="{{$employee->lastname }}" >
 
             </div>
           </div>
@@ -98,7 +98,7 @@
 
                 
             <input type="text" class="form-control form-control-user " id="username" name="username" 
-                      value="{{$client->username }}" >
+                      value="{{$employee->username }}" >
 
             </div>
           </div>
@@ -118,7 +118,7 @@
             <div class="card-body">
 
             <input type="text" class="form-control form-control-user " id="email" name="email" 
-                      value="{{$client->email }}" >
+                      value="{{$employee->email }}" >
 
                       
             </div>

@@ -78,6 +78,13 @@
           <span>الموظّفين </span></a>
       </li>
 
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+        <a class="nav-link" href="/admin/tasks">
+          <i class="fas fa-tasks"></i>
+          <span>المهام </span></a>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -131,14 +138,25 @@
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
+
+                @php $notifications = Auth::user()->notifications @endphp
+
+
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter">{{sizeof($notifications)}}</span>
               </a>
               <!-- Dropdown - Alerts -->
-              <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   الإشعارات
                 </h6>
+
+                
+                    
+                    
+                  @foreach($notifications as $notification)
+
+                  <!-- start -->
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
@@ -146,34 +164,24 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">12 - 8- 2020 15:40</div>
-                    <span class="font-weight-bold">تم هناك تعديل في ملف فلان فلان</span>
+                    <div class="small text-gray-500">{{$notification->created_at}}</div>
+                    <span class="font-weight-bold">
+                      @if($notification->type == 'App\Notifications\UpdateIsMade')
+                      حصل تعديل في حساب {{$notification->data['original_arr']['username']}}
+                      @endif
+                  
+                    </span>
                   </div>
                 </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                  <div class="small text-gray-500">12 - 8- 2020 15:40</div>
-                    <span class="font-weight-bold">تم هناك تعديل في ملف فلان فلان</span>
-                </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                  <div class="small text-gray-500">12 - 8- 2020 15:40</div>
-                    <span class="font-weight-bold">تم هناك تعديل في ملف فلان فلان</span>
-                </div>
-                </a>
+                @endforeach
+                <!-- end -->
+
+                      
+
+
+                
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div> -->
+              </div>
             </li>
 
           

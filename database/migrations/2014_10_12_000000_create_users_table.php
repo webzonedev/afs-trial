@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile_type')->nullable();
             $table->unsignedBigInteger('profile_id')->nullable();
+            $table->smallInteger('is_deactivated')->default(0);
+            $table->smallInteger('is_deleted')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -73,6 +73,24 @@ class ClientsController extends Controller
     }
 
 
+    protected function show_profile(Client $client) {
+        $user = User::where('profile_type','App\Client')->where('profile_id',$client->id)->first();
+        return view('/admin/clients.profile' , ['user' => $user]);
+    }
+
+    protected function deactivate_client(Client $client) {
+        $user = User::where('profile_type','App\Client')->where('profile_id',$client->id)->first();
+        
+        $user->is_deactivated = 1;
+        $user->save();
+
+        return view('/admin/clients.profile' , ['user' => $user]);
+    }
+
+
+  
+
+
 
 }
 
