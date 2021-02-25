@@ -38,6 +38,7 @@ class AdminTasksController extends Controller
         $task = adminTasks::create([
             'task_name' => request('task_name'),
             'company_id'=> request('task_company'),
+
         ]); 
         
       

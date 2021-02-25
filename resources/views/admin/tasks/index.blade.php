@@ -33,7 +33,7 @@
                               
                             <div class="col-md-4">
                             <label for="task_company">الشّركة المعنيّة</label>
-                            <select class=" form-control form-control-user " id="task_company" name="task_company">
+                            <select class=" form-control form-control-user " id="task_company" name="task_company" required>
                                @foreach ($companies as $company)
                                 <option value="{{$company->id}}" selected="selected">{{$company->c_name}}</option>
                                @endforeach
