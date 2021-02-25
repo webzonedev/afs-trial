@@ -111,7 +111,7 @@
                       <td>{{$instance->task_description}}</td>
                       <td dir="ltr">{{$instance->task_start_time}}</td>
                       <td dir="ltr">{{$instance->task_end_time}}</td>
-                      <td dir="ltr">
+                      <td>
 
                       @if($instance->task_end_time != null )
                       @php 
@@ -124,12 +124,14 @@
                       $startTime = new DateTime($instance->task_start_time);
                       $duration = $startTime->diff(new DateTime($instance->task_end_time));
                       
-                      echo $duration->y.' years<br>';
-                      echo $duration->m.' months<br>';
-                      echo $duration->d.' days<br>';
-                      echo $duration->h.' hours<br>';
-                      echo $duration->i.' minutes<br>';
-                      echo floor(abs((new \DateTime($instance->task_end_time))->getTimestamp() - (new \DateTime($instance->task_start_time))->getTimestamp()) / 60);
+                      $years_stmt =  $duration->y != 0 ? $duration->y . ' سنة ' : '';
+                      $months_stmt =  $duration->m != 0 ? $duration->m . ' شهر ' : '';
+                      $days_stmt =  $duration->d != 0 ? $duration->d . ' يوم  ' : '';
+                      $hours_stmt =  $duration->h != 0 ? $duration->h . ' ساعة ' : '';
+                      $minutes_stmt =  $duration->i != 0 ? $duration->i . ' دقيقة ' : '';
+            
+                    echo $years_stmt . $months_stmt . $days_stmt . $hours_stmt . $minutes_stmt ;
+
                       array_push($total_minutes,floor(abs((new \DateTime($instance->task_end_time))->getTimestamp() - (new \DateTime($instance->task_start_time))->getTimestamp()) / 60));
 
 
@@ -207,10 +209,10 @@
             $hours = floor(abs($sum/60 - ($years*8760) - ($months * 730) - ($days * 24)));
             $minutes = floor(abs($sum - ($years*525600) - ($months * 43800) - ($days * 1440) - ($hours * 60)) );
             
-            $years_stmt =  $years != 0 ? $years . ' سنة و ' : '';
-            $months_stmt =  $months != 0 ? $months . ' شهر و ' : '';
-            $days_stmt =  $days != 0 ? $days . ' يوم و ' : '';
-            $hours_stmt =  $hours != 0 ? $hours . ' ساعة و ' : '';
+            $years_stmt =  $years != 0 ? $years . ' سنة ' : '';
+            $months_stmt =  $months != 0 ? $months . ' شهر  ' : '';
+            $days_stmt =  $days != 0 ? $days . ' يوم ' : '';
+            $hours_stmt =  $hours != 0 ? $hours . ' ساعة ' : '';
             $minutes_stmt =  $minutes != 0 ? $minutes . ' دقيقة ' : '';
             
             echo $years_stmt . $months_stmt . $days_stmt . $hours_stmt . $minutes_stmt ;
